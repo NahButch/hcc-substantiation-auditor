@@ -9,6 +9,9 @@ use std::path::Path;
 pub struct Entry {
     pub icd10: String,
     pub icd10_description: String,
+    /// The V28 HCC this code is expected to map to, if any (the crosswalk's
+    /// `expected_v28_hcc` column; blank for near-miss / non-eligible codes).
+    pub expected_hcc: Option<u32>,
 }
 
 #[derive(Debug, Default)]
@@ -37,9 +40,10 @@ impl Crosswalk {
             if snomed.is_empty() || icd10.is_empty() {
                 continue;
             }
+            let expected_hcc = f.get(4).and_then(|s| s.trim().parse::<u32>().ok());
             by_snomed.insert(
                 snomed,
-                Entry { icd10, icd10_description: f[3].trim().to_string() },
+                Entry { icd10, icd10_description: f[3].trim().to_string(), expected_hcc },
             );
         }
         Ok(Crosswalk { by_snomed })
@@ -56,6 +60,17 @@ impl Crosswalk {
             .values()
             .find(|e| e.icd10.replace('.', "").eq_ignore_ascii_case(icd10_dotless))
             .map(|e| e.icd10_description.as_str())
+    }
+
+    /// Expected V28 HCC for an ICD-10 code (normalized, dotless), if the crosswalk
+    /// maps it to one. Used to test whether an extracted condition *implies* a given
+    /// HCC during verification.
+    pub fn hcc_for_icd10(&self, icd10_dotless: &str) -> Option<u32> {
+        let norm = icd10_dotless.trim().to_uppercase().replace('.', "");
+        self.by_snomed
+            .values()
+            .find(|e| e.icd10.replace('.', "").eq_ignore_ascii_case(&norm))
+            .and_then(|e| e.expected_hcc)
     }
 }
 
