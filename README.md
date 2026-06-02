@@ -22,8 +22,8 @@ Deterministic where correctness must be guaranteed; probabilistic only where
 judgment is unavoidable. A Rust **`eval`** crate then scores the two LLM jobs
 (extraction, substantiation) separately against gold labels.
 
-> **DISCLAIMER — Portfolio demonstration only.**
-> This project is a **portfolio demonstration of the substantiation-auditing
+> **DISCLAIMER — Research & educational demonstration only.**
+> This project is a **research and educational demonstration of the substantiation-auditing
 > pattern, NOT a certified or production audit tool**. It uses **synthetic data
 > only** and pins the **CMS-HCC V28** model. It must not be used for real
 > compliance, billing, or clinical decisions.

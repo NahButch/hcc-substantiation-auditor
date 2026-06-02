@@ -1,6 +1,6 @@
 # RESULTS — HCC Substantiation Auditor
 
-> **Portfolio demonstration on synthetic data only.** Every number is an honest
+> **Research & educational demonstration on synthetic data only.** Every number is an honest
 > *floor*, not a real-world performance claim. Figures are quoted verbatim from the
 > committed artifacts in [`harness/results/`](harness/results/)
 > ([`integration_metrics.md`](harness/results/integration_metrics.md),

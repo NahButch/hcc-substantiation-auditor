@@ -23,5 +23,9 @@ running `scripts/fetch_data.sh` (added in Phase 0b).
 ## Out of scope
 
 Real-data benchmarks — including **CodiEsp** and **MIMIC-IV** — are
-intentionally excluded from this project. Including them would require data-use
-agreements and IRB processes outside the scope of this portfolio demonstration.
+intentionally excluded from this project.
+
+> [!CAUTION]
+> Including them would require **data-use agreements and IRB processes** —
+> outside the scope of this research and educational demonstration, and not to be
+> attempted without that approval.
