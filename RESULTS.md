@@ -272,7 +272,7 @@ than a real chart. These are stated as gaps, not results.
   charts are longer, messier, and multi-author. Numbers here will not transfer.
 - **Gold is 100% injected / by-construction.** `gold_injected: 8`, and there are
   **zero manual expert labels** in this slice — the human-labeled set (via
-  `make_worksheet.py`) is **pending**. The labeling worksheet exists; the labels
+  the `make_worksheet` CLI) is **pending**. The labeling worksheet exists; the labels
   do not yet.
 - **Tiny n.** 8 patient/HCC pairs, 4 of them the holdout slice. A single
   misclassification swings every rate by double digits. Treat these as direction,
@@ -300,36 +300,36 @@ gitignored and lives only in the main worktree under `data/` (see
 [`harness/README.md`](harness/README.md) / `data/README.md`.
 
 ```bash
-# Env with the harness deps (pandas, numpy, scikit-learn)
-python3 -m venv .venv && .venv/bin/pip install pandas numpy scikit-learn
+# The eval harness is Rust (crates/eval) — no Python env needed for metrics.
+# (Only harness/crosscheck.py, which drives CMS's own Python reference, needs pandas.)
+TABLES=data/cms_hcc_v28/python_v28/software/CMS_HCC_v28/data/input/internal
 
 # (0) Deterministic synthetic cohort — fixed pop/seed, reproduces identically
 scripts/generate_cohort.sh                       # POP=400 SEED=20260602 (Java 17+)
 
 # (1) Injected known-truth eval slice (FHIR bundles + candidates + gold labels)
-.venv/bin/python harness/inject_errors.py \
-  --fhir-out      data/integration/injected_fhir \
+cargo run -p eval --bin inject_errors -- \
+  --fhir-out       data/integration/injected_fhir \
   --candidates-out data/integration/injected_candidates.jsonl \
-  --gold-out      data/integration/injected_gold.jsonl \
+  --gold-out       data/integration/injected_gold.jsonl \
   --holdout-every 2                              # flags every 2nd label holdout
 
 # (2) Agent audit run → audit_results.jsonl  (local Ollama; qwen2.5:7b-instruct)
 #     usage: audit_jsonl <v28_tables_dir> <crosswalk.csv> <fhir_dir> <out.jsonl> [N]
-TABLES=data/cms_hcc_v28/python_v28/software/CMS_HCC_v28/data/input/internal
 export HCC_MODEL=qwen2.5:7b-instruct
 cargo run --example audit_jsonl -- \
   "$TABLES" crosswalks/snomed_to_icd10_v28.csv \
   data/integration/injected_fhir data/integration/injected_audit.jsonl 8
-#   (cohort variant: ... data/synthea/cohort/fhir data/audits/audit_results.jsonl)
 
-# (2b) Confirm the harness's candidate replication matches the engine (expect EXACT)
-.venv/bin/python harness/derive_candidates.py --reconcile data/integration/injected_audit.jsonl
-
-# (3) Metrics → the committed artifacts in harness/results/
-.venv/bin/python harness/eval.py \
+# (3) Metrics → the committed artifacts in harness/results/. The candidate set is
+#     derived by calling the engine directly (single source of truth — no replica,
+#     so no reconcile step), via --tables; --fhir enables span metrics.
+cargo run -p eval --bin hcceval -- \
   --audit      data/integration/injected_audit.jsonl \
   --gold       data/integration/injected_gold.jsonl \
   --candidates data/integration/injected_candidates.jsonl \
+  --tables     "$TABLES" \
+  --crosswalk  crosswalks/snomed_to_icd10_v28.csv \
   --fhir       data/integration/injected_fhir \
   --json harness/results/integration_metrics.json \
   --md   harness/results/integration_metrics.md

@@ -13,7 +13,7 @@ pattern is **the LLM proposes, a deterministic engine disposes**:
   engine already decided.
 
 Deterministic where correctness must be guaranteed; probabilistic only where
-judgment is unavoidable. A Python **harness** then scores the two LLM jobs
+judgment is unavoidable. A Rust **`eval`** crate then scores the two LLM jobs
 (extraction, substantiation) separately against gold labels.
 
 > **DISCLAIMER — Portfolio demonstration only.**
@@ -28,7 +28,7 @@ judgment is unavoidable. A Python **harness** then scores the two LLM jobs
 |-----------|----------|------|
 | `engine` | [`crates/engine`](crates/engine) | Deterministic CMS-HCC V28 scorer — the verifiable oracle / source of truth |
 | `agent` | [`crates/agent`](crates/agent) | LLM layer: note → conditions extraction, per-HCC M.E.A.T. judgment, `verify → self-correct` loop against `engine` |
-| Eval harness | [`harness/`](harness) | Python harness (`hcceval`): gold-label eval set + extraction/substantiation/system metrics |
+| `eval` | [`crates/eval`](crates/eval) | Rust eval harness: gold-label eval set + extraction/substantiation/system metrics (`harness/crosscheck.py` stays Python — it drives CMS's own reference) |
 | **Results** | [**`RESULTS.md`**](RESULTS.md) | Real numbers on the known-truth slice, with failure analysis and honest limitations |
 
 **New here?** Read [`RESULTS.md`](RESULTS.md) for what it does and how well it
@@ -41,7 +41,7 @@ Built phase by phase; the end-to-end pipeline runs and is measured.
 - [x] Phase 0 — Setup, scaffolding, data acquisition (`scripts/fetch_data.sh`, `DATA.md`)
 - [x] Phase 1 — Deterministic CMS-HCC V28 scoring engine (`engine`): mapping, hierarchy, constraining, demographic factors, interactions, provenance — verified against the CMS reference (`harness/crosscheck.py`)
 - [x] Phase 2 — Extraction + single-pass substantiation assessment (`agent`): local LLM (Ollama) behind a swappable interface, note→conditions extraction, per-HCC M.E.A.T. judgment with citations, run over a Synthea cohort
-- [x] Phase 3 — Agent `verify → self-correct` loop (`agent`) + Python eval harness (`harness/hcceval`) + results: see [`RESULTS.md`](RESULTS.md)
+- [x] Phase 3 — Agent `verify → self-correct` loop (`agent`) + eval harness (Rust `crates/eval`, ported from the Python prototype) + results: see [`RESULTS.md`](RESULTS.md)
 
 Numbers are an **honest floor** on synthetic, partly by-construction data — not a
 real-world performance claim. See [`RESULTS.md`](RESULTS.md) § Limitations.
