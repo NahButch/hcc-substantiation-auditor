@@ -33,6 +33,27 @@ Numbers are an honest floor on a tiny set — directional, not statistical.
 3. **Oracle loop regressed 1 case** (small N). Worth inspecting the self-correct
    prompt on borderline "supported" cases before trusting the loop at scale.
 
+## Update — scaled run + fuzzer (supersedes the n=8 numbers above)
+
+The notes above are the first n=8 integration pass. Current authoritative numbers
+are the scaled run (36 patients / 47 gold pairs; injected + manual annotation) in
+`integration_metrics.{md,json}` and [`../../RESULTS.md`](../../RESULTS.md). Status
+of the three findings:
+
+1. **Citation/hallucination metric** — FIXED in the Rust `eval` port: citations are
+   validated against a regulatory-authority allow-list; hallucination is now
+   evidence-only (40.3% at scale — the model paraphrases evidence spans).
+2. **Extraction recall** — the agent now emits ICD-10 (prompt + family backfill), so
+   recall is measurable: 17.0% (still low — coded chronic conditions are buried in
+   the HPI history list). Was 0% / unmeasurable before.
+3. **Oracle-loop regression** — CONFIRMED at scale and still open: of 4 changed
+   judgments, 3 regressed and 1 improved (resolution 25%). The self-correct prompt
+   needs tuning before the loop is trusted.
+
+**New (differential fuzzer, `harness/fuzz_engine.py`):** 2,100 random claims agree
+exactly with CMS `transform.py` after fixing a negative-age age/sex bug the fuzzer
+surfaced (engine `age_sex_variable` now returns `None` for out-of-band ages).
+
 ## Reproduce
 ```
 # injected known-truth metrics

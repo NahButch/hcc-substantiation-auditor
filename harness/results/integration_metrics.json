@@ -1,158 +1,60 @@
 {
   "counts": {
-    "patients_audited": 8,
-    "audited_hccs": 8,
-    "gold_labels": 8,
+    "patients_audited": 36,
+    "audited_hccs": 47,
+    "gold_labels": 47,
     "gold_holdout": 4,
     "gold_injected": 8,
-    "candidates": 8,
-    "notes_available": 8
+    "candidates": 50,
+    "notes_available": 38
   },
   "substantiation": {
-    "scored_pairs": 8,
+    "scored_pairs": 47,
     "gold_pairs_unreviewed": 0,
-    "unreviewed_keys": [],
     "confusion": {
-      "tp": 4,
-      "fp": 1,
-      "fn": 0,
-      "tn": 3
+      "tp": 37,
+      "fp": 5,
+      "fn": 1,
+      "tn": 4
     },
-    "accuracy": 0.875,
-    "flag_precision": 0.8,
-    "flag_recall": 1.0,
-    "flag_f1": 0.888888888888889,
-    "over_coding_rate": 0.0,
-    "under_flagging_rate": 0.0,
-    "over_flagging_rate": 0.25
+    "accuracy": 0.8723404255319149,
+    "flag_precision": 0.8809523809523809,
+    "flag_recall": 0.9736842105263158,
+    "flag_f1": 0.925,
+    "over_coding_rate": 0.02127659574468085,
+    "under_flagging_rate": 0.02631578947368421,
+    "over_flagging_rate": 0.5555555555555556
   },
   "system": {
-    "agreement_with_gold": 0.875,
-    "scored_pairs": 8,
-    "changed_pairs": 1,
-    "disagreement_resolution_rate": 0.0,
-    "oracle_improved": 0,
-    "oracle_regressed": 1
+    "agreement_with_gold": 0.8723404255319149,
+    "scored_pairs": 47,
+    "changed_pairs": 4,
+    "disagreement_resolution_rate": 0.25,
+    "oracle_improved": 1,
+    "oracle_regressed": 3
   },
   "extraction": {
-    "precision": null,
-    "recall": 0.0,
-    "f1": null,
-    "tp": 0,
-    "fp": 0,
-    "fn": 8,
-    "unmapped_extractions": 8,
-    "per_patient": [
-      {
-        "patient_id": "inj-ckd-supported",
-        "tp": 0,
-        "fp": 0,
-        "fn": 1
-      },
-      {
-        "patient_id": "inj-ckd-unsupported",
-        "tp": 0,
-        "fp": 0,
-        "fn": 1
-      },
-      {
-        "patient_id": "inj-copd-supported",
-        "tp": 0,
-        "fp": 0,
-        "fn": 1
-      },
-      {
-        "patient_id": "inj-copd-unsupported",
-        "tp": 0,
-        "fp": 0,
-        "fn": 1
-      },
-      {
-        "patient_id": "inj-diabetes-supported",
-        "tp": 0,
-        "fp": 0,
-        "fn": 1
-      },
-      {
-        "patient_id": "inj-diabetes-unsupported",
-        "tp": 0,
-        "fp": 0,
-        "fn": 1
-      },
-      {
-        "patient_id": "inj-heart_failure-supported",
-        "tp": 0,
-        "fp": 0,
-        "fn": 1
-      },
-      {
-        "patient_id": "inj-heart_failure-unsupported",
-        "tp": 0,
-        "fp": 0,
-        "fn": 1
-      }
-    ]
+    "precision": 0.7272727272727273,
+    "recall": 0.1702127659574468,
+    "f1": 0.27586206896551724,
+    "tp": 8,
+    "fp": 3,
+    "fn": 39,
+    "unmapped_extractions": 174
   },
   "spans": {
-    "span_accuracy": 0.875,
-    "spans_checked": 8,
-    "citation_grounding": 0.0,
-    "citations_checked": 8,
-    "hallucination_rate": 0.5625,
-    "quotes_checked": 16,
-    "patients_without_notes": 0,
-    "ungrounded_examples": [
-      {
-        "patient_id": "inj-ckd-supported",
-        "kind": "citation",
-        "quote": "CMS Medicare Managed Care Manual, Ch. 7 (risk adjustment) \u2014 M.E.A.T. documentation"
-      },
-      {
-        "patient_id": "inj-ckd-unsupported",
-        "kind": "citation",
-        "quote": "ICD-10-CM Official Guidelines for Coding and Reporting, Section IV (diagnostic coding and reporting guidelines for outpatient services)"
-      },
-      {
-        "patient_id": "inj-copd-supported",
-        "kind": "evidence",
-        "quote": "1. COPD / pulmonary emphysema.\n   - Assess: moderate-to-severe COPD, emphysema-predominant."
-      },
-      {
-        "patient_id": "inj-copd-supported",
-        "kind": "citation",
-        "quote": "CMS M.E.A.T. criteria: Monitoring, Evaluation, Assessment standards are met."
-      },
-      {
-        "patient_id": "inj-copd-unsupported",
-        "kind": "citation",
-        "quote": "CMS Medicare Managed Care Manual, Ch. 7 (risk adjustment) \u2014 M.E.A.T. documentation"
-      },
-      {
-        "patient_id": "inj-diabetes-supported",
-        "kind": "citation",
-        "quote": "CMS Medicare Managed Care Manual, Ch. 7 (risk adjustment) \u2014 M.E.A.T. documentation"
-      },
-      {
-        "patient_id": "inj-diabetes-unsupported",
-        "kind": "citation",
-        "quote": "ICD-10-CM Official Guidelines for Coding and Reporting, Section IV (diagnostic coding and reporting guidelines for outpatient services)"
-      },
-      {
-        "patient_id": "inj-heart_failure-supported",
-        "kind": "citation",
-        "quote": "CMS Medicare Managed Care Manual, Ch. 7 (risk adjustment) \u2014 M.E.A.T. documentation"
-      },
-      {
-        "patient_id": "inj-heart_failure-unsupported",
-        "kind": "citation",
-        "quote": "ICD-10-CM Official Guidelines for Coding and Reporting, Section IV (diagnostic coding and reporting guidelines for outpatient services)"
-      }
-    ]
+    "span_accuracy": 0.5967741935483871,
+    "spans_checked": 186,
+    "citation_validity": 1.0,
+    "citations_checked": 47,
+    "hallucination_rate": 0.4032258064516129,
+    "evidence_checked": 186,
+    "patients_without_notes": 0
   },
   "calibration": {
-    "n": 1,
+    "n": 14,
     "bins": 10,
-    "ece": 0.85,
+    "ece": 0.1928571428571429,
     "curve": [
       {
         "bin": [
@@ -231,18 +133,18 @@
           0.8,
           0.9
         ],
-        "n": 1,
-        "mean_confidence": 0.85,
-        "accuracy": 0.0
+        "n": 10,
+        "mean_confidence": 0.7999999999999999,
+        "accuracy": 0.9
       },
       {
         "bin": [
           0.9,
           1.0
         ],
-        "n": 0,
-        "mean_confidence": null,
-        "accuracy": null
+        "n": 4,
+        "mean_confidence": 0.9249999999999999,
+        "accuracy": 0.5
       }
     ]
   }
