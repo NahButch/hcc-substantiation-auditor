@@ -23,7 +23,7 @@ used as a verifiable oracle.
 Under active development, building phase by phase.
 
 - [x] Phase 0 — Setup, scaffolding, data acquisition (`scripts/fetch_data.sh`, `DATA.md`)
-- [ ] Phase 1 — Deterministic CMS-HCC V28 scoring engine (`engine`): mapping, hierarchy, constraining, demographic factors, provenance
+- [x] Phase 1 — Deterministic CMS-HCC V28 scoring engine (`engine`): mapping, hierarchy, constraining, demographic factors, interactions, provenance — verified against the CMS reference (`harness/crosscheck.py`)
 - [ ] Phase 2 — Extraction + single-pass substantiation assessment (`agent`)
 - [ ] Phase 3 — Agent verify→self-correct loop + Python eval harness (`harness/`) + `RESULTS.md`
 

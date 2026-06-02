@@ -1,0 +1,74 @@
+Variable,Label,COMMUNITY_NA,COMMUNITY_PBA,COMMUNITY_FBA,COMMUNITY_ND,COMMUNITY_PBD,COMMUNITY_FBD,INSTITUTIONAL
+F0_34, Female 0-34,,,,0.238,0.454,0.346,0.948
+F35_44, Female 35-44,,,,0.288,0.42,0.332,0.81
+F45_54, Female 45-54,,,,0.34,0.404,0.384,1.031
+F55_59, Female 55-59,,,,0.385,0.424,0.421,0.949
+F60_64, Female 60-64,,,,0.436,0.414,0.502,0.881
+F65_69, Female 65-69,0.33,0.365,0.435,,,,1.188
+F70_74, Female 70-74,0.395,0.423,0.506,,,,1.119
+F75_79, Female 75-79,0.465,0.485,0.596,,,,0.965
+F80_84, Female 80-84,0.524,0.544,0.665,,,,0.862
+F85_89, Female 85-89,0.624,0.618,0.775,,,,0.75
+F90_94, Female 90-94,0.737,0.738,0.869,,,,0.627
+F95_GT, Female 95+,0.742,0.835,0.877,,,,0.481
+M0_34, Male 0-34,,,,0.106,0.306,0.191,0.826
+M35_44, Male 35-44,,,,0.154,0.261,0.204,0.719
+M45_54, Male 45-54,,,,0.215,0.3,0.293,0.991
+M55_59, Male 55-59,,,,0.283,0.353,0.41,0.989
+M60_64, Male 60-64,,,,0.345,0.374,0.504,0.917
+M65_69, Male 65-69,0.332,0.375,0.531,,,,1.275
+M70_74, Male 70-74,0.396,0.417,0.626,,,,1.224
+M75_79, Male 75-79,0.502,0.498,0.714,,,,1.319
+M80_84, Male 80-84,0.571,0.565,0.789,,,,1.238
+M85_89, Male 85-89,0.664,0.615,0.907,,,,1.135
+M90_94, Male 90-94,0.8,0.712,0.993,,,,0.946
+M95_GT, Male 95+,0.896,0.904,1.058,,,,0.825
+OriginallyDisabled_Female, Originally Disabled Female,0.228,0.103,0.16,,,,
+OriginallyDisabled_Male, Originally Disabled Male,0.135,0.075,0.158,,,,
+ORIGDIS,Originally Disabled,,,,,,,0
+LTIMCAID,LTI Medicaid months,,,,,,,0.13
+HCC35,Pancreas Transplant Status,0.949,1.117,1.117,1.393,2.74,0.573,1.106
+HCC36,Diabetes with Severe Acute Complications,0.166,0.166,0.186,0.191,0.21,0.235,0.28
+HCC37,Diabetes with Chronic Complications,0.166,0.166,0.186,0.191,0.21,0.235,0.28
+HCC38,"Diabetes with No, Glycemic, or Unspecified Complications",0.166,0.166,0.186,0.191,0.21,0.235,0.28
+HCC211,Respirator Dependence/Tracheostomy Status/Complications,0.879,1.022,1.981,0.878,0.59,1.418,1.57
+HCC212,Respiratory Arrest,0.37,0.409,0.573,0.51,0.493,0.662,0.258
+HCC213,Cardio-Respiratory Failure and Shock,0.37,0.409,0.573,0.51,0.493,0.662,0.258
+HCC221,Heart Transplant Status/Complications,1.053,0.88,1.412,0.999,1.371,1.781,0.84
+HCC222,End Stage Heart Failure,2.505,3.009,2.927,5.77,6.106,6.612,0.826
+HCC223,Heart Assist Device/Artificial Heart,2.505,3.009,2.927,5.77,6.106,6.612,0.826
+HCC224,Acute on Chronic Heart Failure,0.36,0.311,0.406,0.442,0.411,0.537,0.217
+HCC225,Acute Heart Failure (Excludes Acute on Chronic),0.36,0.311,0.406,0.442,0.411,0.537,0.217
+HCC226,"Heart Failure, Except End Stage and Acute",0.36,0.311,0.406,0.442,0.411,0.537,0.217
+HCC227,Cardiomyopathy/Myocarditis,0.189,0.145,0.173,0.2,0.186,0.198,0.189
+HCC238,Specified Heart Arrhythmias,0.299,0.293,0.407,0.296,0.261,0.304,0.245
+HCC276,Lung Transplant Status/Complications,2.531,2.961,2.21,1.583,1.277,2.292,3.085
+HCC277,Cystic Fibrosis,0.998,0.65,1.34,2.818,3.829,3.76,0.873
+HCC278,Idiopathic Pulmonary Fibrosis and Lung Involvement in Systemic Sclerosis,0.818,0.65,0.791,1.209,0.937,1.64,0.873
+HCC279,Severe Persistent Asthma,0.818,0.65,0.594,0.842,0.804,0.808,0.873
+HCC280,"Chronic Obstructive Pulmonary Disease, Interstitial Lung Disorders, and Other Chronic Lung Disorders",0.319,0.321,0.39,0.209,0.234,0.281,0.312
+HCC326,"Chronic Kidney Disease, Stage 5",0.815,0.965,0.985,0.927,1.05,0.946,0.958
+HCC327,"Chronic Kidney Disease, Severe (Stage 4)",0.514,0.484,0.565,0.523,0.447,0.661,0.462
+HCC328,"Chronic Kidney Disease, Moderate (Stage 3B)",0.127,0.14,0.116,0.179,0.178,0.181,0.145
+HCC329,"Chronic Kidney Disease, Moderate (Stage 3, Except 3B)",0.127,0.14,0.116,0.179,0.178,0.181,0.145
+D1,1 payment HCC,0,0,0,0,0,0,0
+D2,2 payment HCCs,0,0,0,0,0,0,0
+D3,3 payment HCCs,0,0,0,0,0,0,0
+D4,4 payment HCCs,0,0,0,0,0,0,0
+D5,5 payment HCCs,0.05,0.016,0.049,0.088,0.105,0.095,0
+D6,6 payment HCCs,0.102,0.096,0.071,0.223,0.191,0.245,0
+D7,7 payment HCCs,0.188,0.207,0.16,0.38,0.435,0.472,0
+D8,8 payment HCCs,0.316,0.345,0.267,0.44,0.581,0.607,0
+D9,9 payment HCCs,0.444,0.345,0.353,0.75,0.823,0.841,0
+D10P,10 or more payment HCCs,0.728,0.901,0.746,1.431,1.268,1.471,0.373
+DIABETES_HF_V28,Diabetes*Heart Failure,0.112,0.164,0.183,0.023,0.053,0.041,0.209
+HF_CHR_LUNG_V28,Heart Failure*Chronic Lung Disorder,0.078,0.14,0.109,0.062,0.108,0.097,0.145
+HF_KIDNEY_V28,Heart Failure*Kidney,0.176,0.14,0.194,0.314,0.328,0.42,0
+CHR_LUNG_CARD_RESP_FAIL_V28,Chronic Lung Disorder*Cardiorespiratory Failure,0.254,0.329,0.34,0.242,0.27,0.275,0.331
+HF_HCC238_V28,Heart Failure*Specified Heart Arrhythmias,0.077,0.135,0.14,0.257,0.314,0.372,
+gSubUseDisorder_gPsych_V28,Substance Use Disorder*Psychiatric,,,,0.087,0.149,0.152,
+DISABLED_CANCER_V28,"Disabled, Cancer",,,,,,,0.367
+DISABLED_NEURO_V28,"Disabled, Neurological",,,,,,,0.154
+DISABLED_HF_V28,"Disabled, Heart Failure",,,,,,,0.488
+DISABLED_CHR_LUNG_V28,"Disabled, Chronic Lung Disorder",,,,,,,0.278
+DISABLED_ULCER_V28,"Disabled, Skin Ulcer",,,,,,,0.537
