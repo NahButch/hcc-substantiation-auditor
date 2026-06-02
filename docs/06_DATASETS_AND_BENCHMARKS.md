@@ -51,11 +51,11 @@ Largest open doctor-patient-dialogue → visit-note corpus, with published SOTA 
 
 ---
 
-## Tier 3 — The labels only you can author (the differentiator)
+## Tier 3 — Substantiation labels (no public gold set)
 
 No public dataset labels **HCC substantiation under RADV documentation standards** (the M.E.A.T. / "Condition + Causality + Status + Plan", specificity, laterality judgment). Commercial tools (John Snow Labs GenAI Lab, ForeSee, etc.) do this proprietarily; there's no open gold set.
 
-- Anchor the rubric to CMS's published documentation expectations and the V28 mapping files (Tier 0) so your labels are defensible, not arbitrary.
+- Anchor the rubric to CMS's published documentation expectations and the V28 mapping files (Tier 0) so the labels are defensible, not arbitrary. Authoring such labels is a clinical-coding judgment — do so only within one's own qualifications and compliance obligations.
 
 ---
 
