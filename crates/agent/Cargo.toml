@@ -1,0 +1,13 @@
+[package]
+name = "agent"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+description = "LLM reasoning agent with verify-and-self-correct loop"
+
+[[bin]]
+name = "agent"
+path = "src/main.rs"
+
+[dependencies]
+engine = { path = "../engine" }

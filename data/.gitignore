@@ -1,0 +1,8 @@
+# Ignore all large/generated data files by default.
+# Re-include markdown docs, small config dirs, and this file itself.
+*
+!.gitignore
+!README.md
+!*.md
+!synthea_config/
+!synthea_config/**
