@@ -54,6 +54,30 @@ of the three findings:
 exactly with CMS `transform.py` after fixing a negative-age age/sex bug the fuzzer
 surfaced (engine `age_sex_variable` now returns `None` for out-of-band ages).
 
+## Tuning attempt — inconclusive (recorded, reverted)
+
+We tried to fix the two open weaknesses with prompt changes: (a) a *conservative*
+self-correct prompt (don't flip on an automated-extractor miss; re-read the note),
+and (b) inclusive + strictly-verbatim extraction. A second scaled audit (v2) gave a
+**mixed, noise-dominated** result that did not beat v1:
+
+| metric | v1 | v2 (tuned) |
+|---|---|---|
+| over-flagging | 55.6% | 33.3% (better) |
+| over-coding | 2.1% | 7.0% (worse) |
+| oracle disagreement-resolution | 1↑/3↓ | 1↑/4↓ (still net-negative) |
+| extraction recall | 17.0% | 11.6% (worse) |
+| hallucination | 40.3% | 45.4% (worse) |
+
+Two reasons it's not a trustworthy delta: the runs scored **different patient sets**
+(34 vs 36 audited — varying LLM JSON-parse dropouts → 43 vs 47 pairs), and at
+n≈43 with a stochastic 7B local model the deltas are within run-to-run variance.
+**Conclusion:** prompt tweaks alone don't reliably move these metrics at this
+scale/model. The real levers are a **stronger model**, **multi-run averaging on a
+fixed patient set**, and **less-templated notes** (Synthea buries chronic conditions
+in a history list, capping extraction recall). The prompt changes were reverted to
+keep the repo consistent with the reported v1 numbers.
+
 ## Reproduce
 ```
 # injected known-truth metrics
