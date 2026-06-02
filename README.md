@@ -1,8 +1,20 @@
 # HCC Substantiation Auditor
 
-An agentic system that flags unsubstantiated CMS-HCC risk-adjustment codes in
-clinical documentation, grounded against a deterministic Rust scoring engine
-used as a verifiable oracle.
+Flags **unsubstantiated CMS-HCC risk-adjustment codes** — codes that are billed
+but not backed by M.E.A.T.-grade evidence in the clinical note. The design
+pattern is **the LLM proposes, a deterministic engine disposes**:
+
+- a deterministic Rust **`engine`** computes the CMS-HCC **V28** coded-HCC set and
+  risk score — reproducible and validated against CMS's own reference software
+  (it is the **oracle / source of truth**);
+- an LLM **`agent`** does the open-ended reading — extract conditions from the
+  note, then judge each engine-coded HCC for M.E.A.T./specificity — and runs a
+  **`verify → self-correct`** loop, but is never allowed to invent the code set the
+  engine already decided.
+
+Deterministic where correctness must be guaranteed; probabilistic only where
+judgment is unavoidable. A Python **harness** then scores the two LLM jobs
+(extraction, substantiation) separately against gold labels.
 
 > **DISCLAIMER — Portfolio demonstration only.**
 > This project is a **portfolio demonstration of the substantiation-auditing
@@ -10,22 +22,29 @@ used as a verifiable oracle.
 > only** and pins the **CMS-HCC V28** model. It must not be used for real
 > compliance, billing, or clinical decisions.
 
-## Architecture
+## Where to look
 
 | Component | Location | Role |
 |-----------|----------|------|
-| `engine` | `crates/engine` | Deterministic CMS-HCC V28 scorer; acts as a verifiable oracle / source of truth |
-| `agent` | `crates/agent` | LLM reasoning layer; implements a verify → self-correct loop against `engine` |
-| Eval harness | `harness/` | Python evaluation harness; computes precision/recall/F-score metrics |
+| `engine` | [`crates/engine`](crates/engine) | Deterministic CMS-HCC V28 scorer — the verifiable oracle / source of truth |
+| `agent` | [`crates/agent`](crates/agent) | LLM layer: note → conditions extraction, per-HCC M.E.A.T. judgment, `verify → self-correct` loop against `engine` |
+| Eval harness | [`harness/`](harness) | Python harness (`hcceval`): gold-label eval set + extraction/substantiation/system metrics |
+| **Results** | [**`RESULTS.md`**](RESULTS.md) | Real numbers on the known-truth slice, with failure analysis and honest limitations |
+
+**New here?** Read [`RESULTS.md`](RESULTS.md) for what it does and how well it
+does it, then [`crates/engine`](crates/engine) for the deterministic core.
 
 ## Status
 
-Under active development, building phase by phase.
+Built phase by phase; the end-to-end pipeline runs and is measured.
 
 - [x] Phase 0 — Setup, scaffolding, data acquisition (`scripts/fetch_data.sh`, `DATA.md`)
 - [x] Phase 1 — Deterministic CMS-HCC V28 scoring engine (`engine`): mapping, hierarchy, constraining, demographic factors, interactions, provenance — verified against the CMS reference (`harness/crosscheck.py`)
 - [x] Phase 2 — Extraction + single-pass substantiation assessment (`agent`): local LLM (Ollama) behind a swappable interface, note→conditions extraction, per-HCC M.E.A.T. judgment with citations, run over a Synthea cohort
-- [ ] Phase 3 — Agent verify→self-correct loop + Python eval harness (`harness/`) + `RESULTS.md`
+- [x] Phase 3 — Agent `verify → self-correct` loop (`agent`) + Python eval harness (`harness/hcceval`) + results: see [`RESULTS.md`](RESULTS.md)
+
+Numbers are an **honest floor** on synthetic, partly by-construction data — not a
+real-world performance claim. See [`RESULTS.md`](RESULTS.md) § Limitations.
 
 ## Data policy
 
