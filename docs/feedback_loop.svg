@@ -17,24 +17,24 @@
 <!-- teal = built -->
 <rect x="230" y="64"  width="150" height="56" rx="9" fill="#f0fdfa" stroke="#14b8a6" stroke-width="1.4"/>
 <text x="305" y="89"  text-anchor="middle" font-size="13.5" font-weight="600" fill="#0f766e">Solution</text>
-<text x="305" y="106" text-anchor="middle" font-size="11" fill="#0d9488">engine + agent</text>
+<text x="305" y="106" text-anchor="middle" font-size="11" fill="#0d9488">Engine + agent</text>
 <rect x="430" y="64"  width="150" height="56" rx="9" fill="#f0fdfa" stroke="#14b8a6" stroke-width="1.4"/>
 <text x="505" y="89"  text-anchor="middle" font-size="13.5" font-weight="600" fill="#0f766e">Capture</text>
-<text x="505" y="106" text-anchor="middle" font-size="11" fill="#0d9488">flags &amp; divergences</text>
+<text x="505" y="106" text-anchor="middle" font-size="11" fill="#0d9488">Flags &amp; divergences</text>
 <rect x="630" y="64"  width="150" height="56" rx="9" fill="#f0fdfa" stroke="#14b8a6" stroke-width="1.4"/>
 <text x="705" y="89"  text-anchor="middle" font-size="13.5" font-weight="600" fill="#0f766e">Measure</text>
-<text x="705" y="106" text-anchor="middle" font-size="11" fill="#0d9488">eval harness</text>
+<text x="705" y="106" text-anchor="middle" font-size="11" fill="#0d9488">Eval harness</text>
 <rect x="630" y="210" width="150" height="56" rx="9" fill="#f0fdfa" stroke="#14b8a6" stroke-width="1.4"/>
 <text x="705" y="235" text-anchor="middle" font-size="13.5" font-weight="600" fill="#0f766e">Report</text>
-<text x="705" y="252" text-anchor="middle" font-size="11" fill="#0d9488">actionable findings</text>
+<text x="705" y="252" text-anchor="middle" font-size="11" fill="#0d9488">Actionable findings</text>
 <rect x="200" y="210" width="280" height="56" rx="9" fill="#f5f5f4" stroke="#a8a29e" stroke-width="1"/>
 <text x="340" y="235" text-anchor="middle" font-size="13.5" font-weight="600" fill="#57534e">Analyze + propose</text>
-<text x="340" y="252" text-anchor="middle" font-size="11" fill="#78716c">evidence → policy change</text>
+<text x="340" y="252" text-anchor="middle" font-size="11" fill="#78716c">Evidence → policy change</text>
 
 <!-- ===== edges ===== -->
 <!-- translation (AI edge, purple) -->
 <path d="M180 92 L230 92" fill="none" stroke="#8b5cf6" stroke-width="1.8" marker-end="url(#ah)"/>
-<text x="205" y="84" text-anchor="middle" font-size="10.5" font-style="italic" fill="#7c3aed">translation</text>
+<text x="205" y="84" text-anchor="middle" font-size="10.5" font-style="italic" fill="#7c3aed">Translation</text>
 <!-- top chain (normal) -->
 <path d="M380 92 L430 92" fill="none" stroke="#78716c" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M580 92 L630 92" fill="none" stroke="#78716c" stroke-width="1.6" marker-end="url(#ah)"/>
@@ -44,14 +44,14 @@
 <path d="M630 238 L480 238" fill="none" stroke="#78716c" stroke-width="1.6" marker-end="url(#ah)"/>
 <!-- synthesis return (AI edge, purple): Analyze -> left -> up -> Policy -->
 <path d="M200 238 L105 238 L105 120" fill="none" stroke="#8b5cf6" stroke-width="1.8" marker-end="url(#ah)"/>
-<text x="150" y="230" text-anchor="middle" font-size="10.5" font-style="italic" fill="#7c3aed">synthesis</text>
+<text x="150" y="230" text-anchor="middle" font-size="10.5" font-style="italic" fill="#7c3aed">Synthesis</text>
 <text x="112" y="170" text-anchor="start" font-size="10" font-style="italic" fill="#a8a29e">(new directive)</text>
 
 <!-- ===== legend ===== -->
 <rect x="232" y="298" width="13" height="11" rx="2" fill="#f0fdfa" stroke="#14b8a6" stroke-width="1.2"/>
-<text x="251" y="307" font-size="10.5" fill="#57534e">built / demonstrated</text>
+<text x="251" y="307" font-size="10.5" fill="#57534e">Built / demonstrated</text>
 <rect x="392" y="298" width="13" height="11" rx="2" fill="#f5f5f4" stroke="#a8a29e" stroke-width="1"/>
-<text x="411" y="307" font-size="10.5" fill="#57534e">vision / pointed toward</text>
+<text x="411" y="307" font-size="10.5" fill="#57534e">Vision / pointed toward</text>
 <line x1="560" y1="304" x2="582" y2="304" stroke="#8b5cf6" stroke-width="1.8"/>
 <text x="588" y="307" font-size="10.5" fill="#57534e">AI edge</text>
 </svg>
