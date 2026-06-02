@@ -19,5 +19,5 @@ Companion planning and design documents for the
 
 ## One-line status
 Phases 0–3 complete. Engine agrees exactly with the CMS reference (2,100+ fuzzed
-claims); agent metrics reported honestly with failure analysis. Portfolio
+claims); agent metrics reported honestly with failure analysis. Research and educational
 demonstration, synthetic data only, CMS-HCC V28.

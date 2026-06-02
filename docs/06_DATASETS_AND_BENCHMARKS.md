@@ -73,7 +73,7 @@ No public dataset labels **HCC substantiation under RADV documentation standards
 - *Substantiation side* — your authored gold set (Tier 3); no external baseline exists, which is precisely why building it is credible.
 
 ---
-*Compiled 2026-06-01. CMS pages reorganize; if a model-software link 404s, start from the CMS "Risk Adjustment" hub and navigate by payment year.*
+*Compiled 2026-06-01.*
 
 ---
 

@@ -1,6 +1,6 @@
 # Milestones
 
-Phased so each checkpoint is a finishable, demonstrable artifact. The project has portfolio value at the end of Phase 3; Phases 4–5 are upside. **Resist scope creep** (see overview) — a finished narrow system beats an unfinished broad one.
+Phased so each checkpoint is a finishable, demonstrable artifact. The project reaches a complete, demonstrable system at the end of Phase 3; Phases 4–5 are upside. **Resist scope creep** (see overview) — a finished narrow system beats an unfinished broad one.
 
 ## Phase 0 — Setup & decisions (small, do first)
 - [x] Pick and **pin one HCC model version**. Document why. (Do not support multiple versions in v1.)
@@ -34,7 +34,7 @@ Phased so each checkpoint is a finishable, demonstrable artifact. The project ha
 - [x] Implement the metric set from `03_EVALUATION_HARNESS.md`.
 - [x] Write the results table + failure-mode analysis + "what the oracle caught" section.
 
-**Done = a measured, self-correcting agent with published numbers. THIS IS THE PORTFOLIO DELIVERABLE.** Stop here and polish if time is short.
+**Done = a measured, self-correcting agent with published numbers. THIS IS THE CORE DELIVERABLE.** Stop here and polish if time is short.
 
 ## Phase 4 — Packaging & narrative (cheap, high ROI)
 - [x] Clean README: the thesis, the architecture diagram, the results, the honest limitations.

@@ -52,4 +52,4 @@ A non-deterministic model paired with a checkable source of truth. The agent rea
 
 ## Scope discipline (read before starting)
 
-This project has an obvious failure mode: scope creep into "rebuild all of CMS risk adjustment." Resist it. The portfolio value is reached at a **single HCC model version, a narrow set of HCCs, and one clean agent loop with a real eval**. Breadth can come later; a finished, measured, narrow system beats an unfinished broad one every time.
+This project has an obvious failure mode: scope creep into "rebuild all of CMS risk adjustment." Resist it. The core value is reached at a **single HCC model version, a narrow set of HCCs, and one clean agent loop with a real eval**. Breadth can come later; a finished, measured, narrow system beats an unfinished broad one every time.

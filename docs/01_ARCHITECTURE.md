@@ -51,7 +51,7 @@ Design properties to make explicit (these are the resume-worthy engineering choi
 - **Compile-checked model versioning** — encode the HCC model version as a type-level or clearly-bounded dimension so you cannot accidentally mix V-version coefficients with the wrong mapping. This is the "model governance" story.
 - **Auditable** — every score decomposes into its contributing factors. This is the RADV-defense property *and* the thing the agent grounds against.
 
-> **Model-version note:** Do not try to support every version. Pick one publicly documented CMS HCC model version, pin it, and say so. The portfolio point is made with one version done correctly. Multi-version support is a "later" item and is explicitly out of scope for v1.
+> **Model-version note:** Do not try to support every version. Pick one publicly documented CMS HCC model version, pin it, and say so. The point is made with one version done correctly. Multi-version support is a "later" item and is explicitly out of scope for v1.
 
 ## Component 2 — LLM reasoning layer
 
