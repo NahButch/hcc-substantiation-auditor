@@ -39,6 +39,23 @@ impl<V: ModelVersion> Engine<V> {
         &self.tables
     }
 
+    /// Collapse a set of HCCs through the V28 hierarchy: drop any HCC that a
+    /// more-severe present HCC trumps. Lets downstream code (e.g. the evaluation
+    /// harness) reuse the authoritative hierarchy instead of replicating it.
+    pub fn collapse_hccs(&self, present: &BTreeSet<u32>) -> BTreeSet<u32> {
+        let mut trumped: BTreeSet<u32> = BTreeSet::new();
+        for (hcc, secondaries) in self.tables.hierarchies() {
+            if present.contains(hcc) {
+                for t in secondaries {
+                    if present.contains(t) {
+                        trumped.insert(*t);
+                    }
+                }
+            }
+        }
+        present.difference(&trumped).copied().collect()
+    }
+
     /// Score one beneficiary, returning a fully decomposed result with provenance.
     pub fn score(&self, person: &PersonInput) -> ScoreResult {
         let age = calculate_age(person.date_of_birth, V::cutoff_date());
