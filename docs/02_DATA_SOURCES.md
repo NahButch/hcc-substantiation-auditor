@@ -15,16 +15,16 @@ The agent needs to reason over **clinical documentation (free text / notes)** to
 
 ## Primary: Synthea
 
-What it gives you:
+What it provides:
 - Per-patient FHIR bundles with Conditions, Encounters, Observations, Procedures, MedicationRequests, etc., grouped by encounter in chronological order.
 - **Clinical notes** as `DocumentReference` / `DiagnosticReport` resources (requires US Core enabled in config).
-- Deterministic generation from open modules — you can generate as many patients as you want and you control the disease mix.
+- Deterministic generation from open modules — any number of patients can be generated, with full control of the disease mix.
 - Apache-2.0 tooling; outputs usable without legal/privacy concern.
 
-Useful related repos (verify current state when you start — these move):
+Useful related repos (verify current state at the outset — these move):
 - `synthetichealth/synthea` — the generator itself.
 - `synthetichealth/chatty-notes` — a tool for generating clinical notes from Synthea FHIR bundles (was actively updated as of mid-2025). This is directly relevant: richer notes = a harder, more credible substantiation task.
-- The **Coherent Data Set** (MITRE, on AWS open data) — a large prebuilt Synthea export including FHIR + simple clinical notes, if you want data without running the generator.
+- The **Coherent Data Set** (MITRE, on AWS open data) — a large prebuilt Synthea export including FHIR + simple clinical notes, for data without running the generator.
 
 What to watch:
 - Synthea populates required FHIR fields but few optional ones; note richness depends on config and on the notes tooling. Plan to tune the generator/notes config so documentation is rich enough that substantiation judgment is non-trivial.
@@ -50,4 +50,4 @@ Keep the labeled set **small but clean** — a few hundred carefully labeled can
 
 - Commit generation configs and seeds, not giant data dumps — make the cohort reproducible.
 - Put a clear `DATA.md` in the repo stating: synthetic only, source, generation command, and the explicit statement that no real or personal health data is used anywhere.
-- License-check anything you redistribute (Synthea outputs and Coherent set have permissive terms; cite them).
+- License-check anything redistributed (Synthea outputs and Coherent set have permissive terms; cite them).

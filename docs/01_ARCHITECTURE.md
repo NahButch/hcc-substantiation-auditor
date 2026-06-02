@@ -48,7 +48,7 @@ Responsibilities:
 
 Design properties to make explicit (these are the resume-worthy engineering choices):
 - **Deterministic and reproducible** — same input, same output, always.
-- **Compile-checked model versioning** — encode the HCC model version as a type-level or clearly-bounded dimension so you cannot accidentally mix V-version coefficients with the wrong mapping. This is the "model governance" story.
+- **Compile-checked model versioning** — encode the HCC model version as a type-level or clearly-bounded dimension so V-version coefficients cannot be accidentally mixed with the wrong mapping. This is the "model governance" story.
 - **Auditable** — every score decomposes into its contributing factors. This is the RADV-defense property *and* the thing the agent grounds against.
 
 > **Model-version note:** Do not try to support every version. Pick one publicly documented CMS HCC model version, pin it, and say so. The point is made with one version done correctly. Multi-version support is a "later" item and is explicitly out of scope for v1.

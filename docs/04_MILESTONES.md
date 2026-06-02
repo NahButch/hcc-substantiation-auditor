@@ -51,7 +51,7 @@ Phased so each checkpoint is a finishable, demonstrable artifact. The project re
 **Each Phase-5 item is independently shippable. None should block the Phase-3 deliverable.**
 
 ## Sequencing logic
-Truth side before probabilistic side (Phase 1 before 2) — you cannot ground an agent against an oracle you haven't built. Loop and eval together (Phase 3) — the self-correction loop is only meaningful if you can measure that it helps. Narrative last and cheap (Phase 4) — but do not skip it; an unread project has no credibility value.
+Truth side before probabilistic side (Phase 1 before 2) — an agent cannot be grounded against an oracle that hasn't been built. Loop and eval together (Phase 3) — the self-correction loop is only meaningful if it can be measured to help. Narrative last and cheap (Phase 4) — but do not skip it; an unread project has no credibility value.
 
 ---
 
