@@ -26,7 +26,7 @@ Fully synthetic patients with complete histories and **clinical notes**; FHIR/C-
 - `synthetichealth/chatty-notes` — richer LLM-generated notes from Synthea bundles (harder, more credible substantiation task).
 - **Coherent Data Set** (MITRE, AWS open data) — large prebuilt Synthea export with notes if you'd rather not run the generator.
 
-**Expected results:** you *derive* ground truth — run structured diagnoses through your engine (validated against CMS logic) to get the canonical HCC set + score per patient. So Synthea gives you data **and** mechanical truth in one pipeline. The only hand-labeling needed is the substantiation layer (see Tier 3).
+**Expected results:** ground truth is *derived* — run structured diagnoses through the engine (validated against CMS logic) to get the canonical HCC set + score per patient. So Synthea provides data **and** mechanical truth in one pipeline. The only hand-labeling needed is the substantiation layer (see Tier 3).
 
 ### MedSyn synthetic clinical notes (open)
 Large open synthetic clinical-note set (~41k notes over 219 ICD-10 codes). **Caveat: it's Russian-language** — useful as a structural reference or for the extraction sub-task, less so for English RADV. Note it exists; probably not your primary.
@@ -64,13 +64,13 @@ No public dataset labels **HCC substantiation under RADV documentation standards
 1. **Oracle:** reimplement CMS V28 mappings/coefficients (Tier 0); validate your Rust engine against CMS's own logic → *mechanical ground truth, free.*
 2. **Records:** generate a Synthea cohort with notes (Tier 1), disease mix chosen to surface target HCCs + near-misses.
 3. **Extraction metrics:** score note→diagnosis extraction; optionally sanity-check method against **CodiEsp's** published P/R/F1 to see if your extraction is in a sane range.
-4. **Substantiation metrics:** score against your hand-labeled set (Tier 3) — the metric no public dataset provides and the heart of the project.
+4. **Substantiation metrics:** score against the hand-labeled set (Tier 3) — the metric no public dataset provides and the heart of the project.
 5. **(Optional rigor):** if you ever want a real-world reference point, cite MIMIC-IV/CodiEsp published baselines rather than ingesting real data.
 
 **Bottom line on "expected results to measure against":**
 - *Deterministic side* — exact agreement with CMS published model logic (Tier 0). Pass/fail, not fuzzy.
 - *Extraction side* — comparable to CodiEsp/MIMIC published P/R/F1 leaderboards (Tier 2).
-- *Substantiation side* — your authored gold set (Tier 3); no external baseline exists, which is precisely why building it is credible.
+- *Substantiation side* — the authored gold set (Tier 3); no external baseline exists, which is precisely why building it is credible.
 
 ---
 *Compiled 2026-06-01.*
