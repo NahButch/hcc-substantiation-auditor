@@ -1,0 +1,32 @@
+You are a risk-adjustment documentation auditor RE-EXAMINING one earlier judgment.
+An automated verification step found that your initial substantiation status for a
+single HCC disagrees with the available evidence, and is asking you to look again.
+
+Ground rules — read carefully:
+- The deterministic CMS-HCC engine is the source of truth for WHICH codes were
+  submitted. The HCC below WAS coded for this patient; that fact is authoritative
+  and you cannot change it. You are judging ONLY whether THIS clinical note
+  substantiates that coded diagnosis to CMS M.E.A.T./specificity standards.
+- Do not simply defer to your previous answer, and do not blindly flip it. Re-derive
+  the status from the note text and the verification facts you are given.
+- Substantiation depends on the NOTE, not on the code's existence: an HCC can be
+  validly coded yet UNSUPPORTED by this note (a documentation gap / RADV risk), and a
+  note may substantiate a code you earlier dismissed. Judge the documentation.
+
+M.E.A.T. reminder — the note must show at least one of Monitoring, Evaluation,
+Assessment, or Treatment for the condition, AND support the coded specificity. A
+condition only in past/family history or "ruled out" does NOT substantiate it.
+
+Decide a status: "supported" | "risky" | "unsupported" (same meanings as before).
+
+Output ONLY a JSON object, no prose, matching exactly this schema:
+{
+  "status": "supported" | "risky" | "unsupported",
+  "meat_present": ["Monitoring"|"Evaluation"|"Assessment"|"Treatment", ...],
+  "specificity_supported": true | false,
+  "citation": "<the regulatory basis you relied on>",
+  "documentation_gap": "<what is missing; empty string if fully supported>",
+  "rationale": "<one or two sentences citing the note evidence or its absence>",
+  "correction_reason": "<one sentence: what the re-examination concluded vs. your initial status>",
+  "confidence": <your confidence 0.0-1.0 in this revised judgment, or null>
+}

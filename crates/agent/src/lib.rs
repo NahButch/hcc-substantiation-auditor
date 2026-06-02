@@ -13,4 +13,6 @@ pub mod fhir;
 pub mod groundtruth;
 pub mod json;
 pub mod llm;
+pub mod self_correct;
 pub mod substantiation;
+pub mod verify;

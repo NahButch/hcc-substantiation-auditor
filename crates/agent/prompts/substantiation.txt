@@ -35,5 +35,6 @@ Output ONLY a JSON object, no prose, matching exactly this schema:
   "specificity_supported": true | false,
   "citation": "<the regulatory basis you relied on>",
   "documentation_gap": "<what is missing; empty string if fully supported>",
-  "rationale": "<one or two sentences citing the note evidence or its absence>"
+  "rationale": "<one or two sentences citing the note evidence or its absence>",
+  "confidence": <your confidence 0.0-1.0 in this judgment, or null>
 }

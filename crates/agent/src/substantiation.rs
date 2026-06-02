@@ -20,6 +20,9 @@ pub struct Judgment {
     pub documentation_gap: String,
     #[serde(default)]
     pub rationale: String,
+    /// Model's self-reported confidence in this judgment (0.0–1.0), if provided.
+    #[serde(default)]
+    pub confidence: Option<f64>,
 }
 
 impl Judgment {
