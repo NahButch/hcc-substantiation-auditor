@@ -1,13 +1,13 @@
 # Evaluation Harness
 
-> This is the document that separates the project from a demo. Applied-AI maturity *is* knowing how to measure a probabilistic system against truth. The candidate's reconciliation / variance-decomposition background maps directly onto this — lead with that framing in interviews.
+> This is what separates the project from a demo: applied-AI maturity *is* knowing how to measure a probabilistic system against truth.
 
 ## Principle
 
 The system has a **probabilistic half** (the LLM) and a **deterministic half** (the engine). The eval scores the probabilistic half against ground truth. Ground truth has two layers:
 
 1. **Mechanical truth** — what the deterministic engine produces from structured diagnoses. Unambiguous.
-2. **Substantiation truth** — the hand-labeled judgment of whether documentation supports each code under CMS standards. Authored by the candidate's domain expertise.
+2. **Substantiation truth** — the hand-labeled judgment of whether documentation supports each code under CMS standards. Authored by domain expertise.
 
 Because the LLM does two distinct jobs (extraction and substantiation judgment), they get measured **separately**. Mixing them hides where the system actually fails.
 
@@ -35,12 +35,15 @@ Because the LLM does two distinct jobs (extraction and substantiation judgment),
 
 A README section (or short report) with:
 1. The metric table above, with real numbers on the labeled set.
-2. **A failure-mode analysis** — categorize where the agent fails and *why*: e.g. "fails on conditions documented only in history sections," "over-codes when a symptom is mentioned without a confirmed diagnosis," "misattributes specificity." This qualitative layer, grounded in domain knowledge, is what makes the candidate's version of the analysis credible where a generalist's would be shallow.
+2. **A failure-mode analysis** — categorize where the agent fails and *why*: e.g. "fails on conditions documented only in history sections," "over-codes when a symptom is mentioned without a confirmed diagnosis," "misattributes specificity." This qualitative layer, grounded in domain knowledge, is what makes the analysis credible.
 3. A short **"what the oracle caught"** section — concrete cases where the deterministic engine corrected the LLM, demonstrating the pattern's value.
 
-## Framing the metrics through the candidate's background
+## The metric shape
 
-The honest, differentiating framing: this is the same problem shape as **prediction-vs-actual reconciliation and variance decomposition** from the Allscripts work — bind a model's output to a source of truth, compute where and how much it diverges, and decompose the divergence into interpretable drivers (here: extraction error vs. substantiation-judgment error vs. citation error). Say it that way. It connects a decade of domain work to a modern applied-AI evaluation discipline in one sentence.
+This is the same shape as **prediction-vs-actual reconciliation and variance
+decomposition**: bind a model's output to a source of truth, compute where and how
+much it diverges, and decompose the divergence into interpretable drivers (here:
+extraction error vs. substantiation-judgment error vs. citation error).
 
 ## Methodology cautions (state these; they signal rigor)
 - The substantiation labels are **one expert's judgment** on **synthetic** notes — not a multi-rater gold standard and not real charts. State this limit plainly; it does not weaken the project, and pretending otherwise would.

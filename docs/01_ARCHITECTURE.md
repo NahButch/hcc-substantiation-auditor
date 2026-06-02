@@ -30,7 +30,7 @@
 
 ## Component 1 — Deterministic scoring engine (Rust)
 
-The **truth side**. This is where the candidate's domain depth lives and where correctness is non-negotiable.
+The **truth side**. This is where the domain depth lives and where correctness is non-negotiable.
 
 Responsibilities:
 - ICD-10-CM diagnosis → HCC condition-category mapping for **one pinned model version** (choose deliberately — see note below).
@@ -74,7 +74,7 @@ The loop that makes it *agentic* rather than a single prompt:
               citation and the documentation gap that drives the flag
 ```
 
-The **VERIFY → SELF-CORRECT against an oracle** segment is the part interviewers probe for. It is the difference between "an LLM with a medical prompt" and "an agent grounded in a verifiable source of truth."
+The **VERIFY → SELF-CORRECT against an oracle** segment is the crux of the design. It is the difference between "an LLM with a medical prompt" and "an agent grounded in a verifiable source of truth."
 
 ## Component 4 — Evaluation harness (offline, separate)
 
@@ -84,11 +84,11 @@ Not part of the runtime path. Detailed in `03_EVALUATION_HARNESS.md`. The key ar
 
 ## Optional extension (only after v1 ships)
 
-Expose the deterministic engine as an **MCP server** so any LLM client can call it as a scoring/audit tool. This connects directly to the candidate's existing three MCP servers — a fourth, domain-differentiated one — and is a clean, finishable add-on. Do not let it block v1.
+Expose the deterministic engine as an **MCP server** so any LLM client can call it as a scoring/audit tool. A clean, finishable add-on. Do not let it block v1.
 
 ## Technology choices
 
-- **Rust** for the engine (deterministic, fast, the candidate's current stack, and it matches the existing MCP-server portfolio).
+- **Rust** for the engine (deterministic, fast, compile-checked model versioning).
 - **LLM via API** for the reasoning layer; keep the provider behind a thin interface so it's swappable.
 - **AI-assisted build (Claude Code)** end-to-end — itself part of the applied-AI story.
 - Eval harness can be Rust or Python; Python is fine here since the deliverable is the numbers, not the harness.

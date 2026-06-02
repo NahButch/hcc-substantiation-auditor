@@ -2,11 +2,11 @@
 
 ## The constraint that drives everything
 
-**Never use real patient data, and never use the candidate's own medical or claims records.** This is both an ethical/privacy line and a credibility point: a project built openly on synthetic data is publishable, shareable, and interview-safe. Stated up front, it is a strength.
+**Never use real patient data, and never anyone's real medical or claims records.** This is an ethical/privacy line: a project built openly on synthetic data is publishable and shareable. Stated up front, it is a strength.
 
 ## The key data design problem
 
-The agent needs to reason over **clinical documentation (free text / notes)** to judge whether a code is *substantiated*. That requirement splits the candidate data sources cleanly:
+The agent needs to reason over **clinical documentation (free text / notes)** to judge whether a code is *substantiated*. That requirement splits the data sources cleanly:
 
 - **Claims-level synthetic data (DE-SynPUF)** is structurally realistic for *codes and claims* but contains **no clinical notes** — there's no documentation for the agent to reason about substantiation against. It is also coarsened/synthetic enough that CMS itself notes it has limited inferential value.
 - **Synthea** generates full synthetic medical histories **including clinical notes** (via `DocumentReference` / `DiagnosticReport` for notes when US Core is enabled), exported as FHIR, C-CDA, or CSV — and it's explicitly free of cost, privacy, and security restrictions.
@@ -37,11 +37,11 @@ What to watch:
 
 ## Constructing the labeled evaluation set
 
-This is the part that makes the eval credible, and it is where the candidate's domain expertise produces something almost no one else can author. See `03_EVALUATION_HARNESS.md` for how the labels feed the metrics. The data-side steps:
+This is the part that makes the eval credible, and it is where domain expertise produces something rare. See `03_EVALUATION_HARNESS.md` for how the labels feed the metrics. The data-side steps:
 
 1. **Generate a Synthea cohort** with a deliberately chosen disease mix so the relevant HCCs actually appear (and so do near-misses — conditions that look HCC-eligible but aren't documented to standard).
 2. **Derive engine ground truth.** Run the deterministic engine over the *structured* diagnoses to get the canonical HCC set and score per patient. This is mechanical truth — what the codes *do* produce under the pinned model version.
-3. **Hand-label substantiation truth** on a sample. For each candidate HCC, the candidate (using domain knowledge) labels whether the *note text* actually substantiates the code under the relevant CMS documentation standard, or whether it would be an over-code / unsupported in a RADV review. This human-authored layer is the rare asset.
+3. **Hand-label substantiation truth** on a sample. For each candidate HCC, a domain expert labels whether the *note text* actually substantiates the code under the relevant CMS documentation standard, or whether it would be an over-code / unsupported in a RADV review. This human-authored layer is the rare asset.
 4. **Inject controlled error.** Deliberately create records where the structured code is present but the documentation is weak/absent, and vice versa — this is what lets the eval measure whether the agent catches real RADV-style problems rather than just echoing the codes.
 
 Keep the labeled set **small but clean** — a few hundred carefully labeled candidate-HCC decisions beats thousands of noisy ones. The credibility is in the labeling rigor, not the volume.

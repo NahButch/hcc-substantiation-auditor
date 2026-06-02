@@ -39,7 +39,7 @@ Phased so each checkpoint is a finishable, demonstrable artifact. The project ha
 ## Phase 4 — Packaging & narrative (cheap, high ROI)
 - [ ] Clean README: the thesis, the architecture diagram, the results, the honest limitations.
 - [ ] A short walkthrough (recorded demo or annotated example) showing one record flowing through the loop.
-- [ ] Resume bullet + interview framing (kept in a separate private doc).
+- [ ] Narrative / framing notes (kept in a separate private doc).
 
 **Done = a stranger can understand the value in two minutes.**
 

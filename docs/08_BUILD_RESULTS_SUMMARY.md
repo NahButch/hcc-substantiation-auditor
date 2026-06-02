@@ -37,7 +37,7 @@ The honest, mixed result is *more* credible than a clean sweep — and every wea
 - **Extraction recall is low (17%)** because Synthea buries chronic conditions in the HPI past-history list rather than the Assessment & Plan. The ICD-10 backfill made this *measurable* (was 0%); the low value is a real finding about both the notes and the extractor — not a silent failure.
 - **Hallucination 40%** = the model paraphrases evidence quotes rather than quoting verbatim; citations, scored against an allow-list, are 100% valid. Precise about *which* kind of grounding failed.
 
-The interview move: lead with the exact-CMS-agreement and the fuzzer-caught bug (unambiguous engineering win), then walk the agent metrics as a candid error-profile analysis — what works, what doesn't, and exactly why, in domain terms. That candor, plus knowing the worst failure mode cold, is the credibility signal.
+How to read these results: the exact-CMS-agreement and the fuzzer-caught bug are unambiguous engineering wins; the agent metrics are a candid error profile — what works, what doesn't, and exactly why, in domain terms. The headline is the oracle pattern (deterministic truth + probabilistic reasoning) and honest measurement against it.
 
 ## As-built environment / scope
 

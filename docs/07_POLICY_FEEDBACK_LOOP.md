@@ -52,6 +52,11 @@ Claiming the demonstrated arc precisely, and presenting the full circuit as the 
 
 The analyze→propose edge has a real hazard: an AI proposing policy changes from data its own solution captured is a closed loop that can drift, entrench its own errors, or optimize the measure instead of the goal (Goodhart's law). The credible version of this vision keeps the AI making the loop **auditable, not autonomous** — proposals are evidence-traceable *inputs* to human and regulatory decision-making, never self-enacting. Speed on the synthesis edge raises the stakes on grounding and oversight; the design answer is traceability and a human in the loop, not automation of the rule-making itself.
 
-## Why this is the differentiating story for prospects
+## Why the whole-loop view matters
 
-For someone evaluating what the candidate could do on *their* projects: most engineers can build a model or a pipeline (one box). The rare capability is seeing the *whole loop* — translating a domain's rules into executable logic, instrumenting the real-world signal, measuring it rigorously, and closing the evidence→decision path — and knowing where AI belongs (the edges) and where it must not (autonomous rule-making). That systems-level, domain-grounded, governance-aware view is what few provide and what puts the candidate on the team rather than adjacent to it.
+Most engineering effort builds a model or a pipeline (one box). The harder, rarer
+capability is seeing the *whole loop* — translating a domain's rules into executable
+logic, instrumenting the real-world signal, measuring it rigorously, and closing the
+evidence→decision path — and knowing where AI belongs (the edges) and where it must
+not (autonomous rule-making). That systems-level, domain-grounded, governance-aware
+view is the point of this project.

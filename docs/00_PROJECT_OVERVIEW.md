@@ -17,13 +17,13 @@ The value is the **inseparability of the two halves**:
 - The LLM/agent layer is useless without the regulatory knowledge — anyone can prompt a model with "find unsupported codes," but only correct HCC/RADV domain logic makes the output trustworthy.
 - The regulatory knowledge is what makes the AI *checkable* — the deterministic engine is a source of truth the probabilistic agent must agree with.
 
-A generalist ML engineer cannot build the domain side. A domain expert without AI skills cannot build the agent side. The candidate sits in the only position that can build both. That is the entire story "domain + AI fusion" needs to tell, and it is verifiable in code.
+A generalist ML engineer cannot build the domain side. A domain expert without AI skills cannot build the agent side. The project requires both, and that "domain + AI fusion" is verifiable in code.
 
 ## The core architectural pattern
 
 **"LLM proposes, verified engine disposes."**
 
-A non-deterministic model paired with a checkable source of truth. The agent reasons in natural language about clinical documentation and regulatory sufficiency; the deterministic engine scores risk and provides ground truth; the agent cannot assert a code is supported if the engine's logic disagrees. This pattern — grounding probabilistic reasoning against a verifiable oracle — is exactly what serious applied-AI teams care about right now, and the candidate is unusually positioned to build the *truth side* correctly.
+A non-deterministic model paired with a checkable source of truth. The agent reasons in natural language about clinical documentation and regulatory sufficiency; the deterministic engine scores risk and provides ground truth; the agent cannot assert a code is supported if the engine's logic disagrees. This pattern — grounding probabilistic reasoning against a verifiable oracle — is exactly what serious applied-AI teams care about right now, and getting the *truth side* correct is what makes it credible.
 
 ## What "done" looks like
 
@@ -35,7 +35,7 @@ A non-deterministic model paired with a checkable source of truth. The agent rea
 
 ## The non-negotiable guardrail
 
-**CMS synthetic data only.** Never the candidate's own medical or claims records, never real patient data. Use CMS DE-SynPUF (synthetic Medicare claims) and/or Synthea-generated synthetic populations. Stated up front — "built on CMS synthetic beneficiary data" — this is a **credibility plus**, not a limitation, and it removes the privacy problem entirely.
+**CMS synthetic data only.** Never anyone's real medical or claims records, never real patient data. Use CMS DE-SynPUF (synthetic Medicare claims) and/or Synthea-generated synthetic populations. Stated up front — "built on CMS synthetic beneficiary data" — this is a **credibility plus**, not a limitation, and it removes the privacy problem entirely.
 
 ## Document set in this package
 
