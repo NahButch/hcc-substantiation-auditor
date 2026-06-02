@@ -1,0 +1,202 @@
+{
+  "counts": {
+    "patients_audited": 6,
+    "audited_hccs": 6,
+    "gold_labels": 6,
+    "gold_holdout": 2,
+    "gold_injected": 3,
+    "candidates": 6,
+    "notes_available": 6
+  },
+  "substantiation": {
+    "scored_pairs": 6,
+    "gold_pairs_unreviewed": 0,
+    "unreviewed_keys": [],
+    "confusion": {
+      "tp": 2,
+      "fp": 1,
+      "fn": 1,
+      "tn": 2
+    },
+    "accuracy": 0.6666666666666666,
+    "flag_precision": 0.6666666666666666,
+    "flag_recall": 0.6666666666666666,
+    "flag_f1": 0.6666666666666666,
+    "over_coding_rate": 0.16666666666666666,
+    "under_flagging_rate": 0.3333333333333333,
+    "over_flagging_rate": 0.3333333333333333
+  },
+  "system": {
+    "agreement_with_gold": 0.6666666666666666,
+    "scored_pairs": 6,
+    "changed_pairs": 3,
+    "disagreement_resolution_rate": 0.6666666666666666,
+    "oracle_improved": 2,
+    "oracle_regressed": 1
+  },
+  "extraction": {
+    "precision": 0.75,
+    "recall": 0.5,
+    "f1": 0.6,
+    "tp": 3,
+    "fp": 1,
+    "fn": 3,
+    "unmapped_extractions": 1,
+    "per_patient": [
+      {
+        "patient_id": "p1",
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "patient_id": "p2",
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      {
+        "patient_id": "p3",
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "patient_id": "p4",
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      {
+        "patient_id": "p5",
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "patient_id": "p6",
+        "tp": 0,
+        "fp": 1,
+        "fn": 1
+      }
+    ]
+  },
+  "spans": {
+    "span_accuracy": 0.8,
+    "spans_checked": 5,
+    "citation_grounding": 0.6666666666666666,
+    "citations_checked": 3,
+    "hallucination_rate": 0.25,
+    "quotes_checked": 8,
+    "patients_without_notes": 0,
+    "ungrounded_examples": [
+      {
+        "patient_id": "p4",
+        "kind": "citation",
+        "quote": "eGFR within range"
+      },
+      {
+        "patient_id": "p6",
+        "kind": "evidence",
+        "quote": "history of diabetes"
+      }
+    ]
+  },
+  "calibration": {
+    "n": 6,
+    "bins": 10,
+    "ece": 0.3,
+    "curve": [
+      {
+        "bin": [
+          0.0,
+          0.1
+        ],
+        "n": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "bin": [
+          0.1,
+          0.2
+        ],
+        "n": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "bin": [
+          0.2,
+          0.3
+        ],
+        "n": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "bin": [
+          0.3,
+          0.4
+        ],
+        "n": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "bin": [
+          0.4,
+          0.5
+        ],
+        "n": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "bin": [
+          0.5,
+          0.6
+        ],
+        "n": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "bin": [
+          0.6,
+          0.7
+        ],
+        "n": 1,
+        "mean_confidence": 0.6,
+        "accuracy": 0.0
+      },
+      {
+        "bin": [
+          0.7,
+          0.8
+        ],
+        "n": 1,
+        "mean_confidence": 0.7,
+        "accuracy": 0.0
+      },
+      {
+        "bin": [
+          0.8,
+          0.9
+        ],
+        "n": 2,
+        "mean_confidence": 0.825,
+        "accuracy": 1.0
+      },
+      {
+        "bin": [
+          0.9,
+          1.0
+        ],
+        "n": 2,
+        "mean_confidence": 0.925,
+        "accuracy": 1.0
+      }
+    ]
+  }
+}

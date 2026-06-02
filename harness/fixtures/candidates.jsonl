@@ -1,0 +1,6 @@
+{"patient_id": "p1", "hcc": 37, "triggering_icd10": ["E1122"], "triggering_snomed": ["127013003"]}
+{"patient_id": "p2", "hcc": 37, "triggering_icd10": ["E1122"], "triggering_snomed": ["127013003"]}
+{"patient_id": "p3", "hcc": 327, "triggering_icd10": ["N184"], "triggering_snomed": ["431857002"]}
+{"patient_id": "p4", "hcc": 327, "triggering_icd10": ["N184"], "triggering_snomed": ["431857002"]}
+{"patient_id": "p5", "hcc": 226, "triggering_icd10": ["I509"], "triggering_snomed": ["88805009"]}
+{"patient_id": "p6", "hcc": 280, "triggering_icd10": ["J439"], "triggering_snomed": ["87433001"]}
