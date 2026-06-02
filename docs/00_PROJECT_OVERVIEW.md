@@ -1,6 +1,6 @@
 # hcc-substantiation-auditor
 
-**RADV Audit-Defense Agent — a portfolio project demonstrating domain + AI fusion for applied-AI roles.**
+**RADV Audit-Defense Agent — demonstrating domain + AI fusion for applied-AI roles.**
 
 *(Project/repo name: `hcc-substantiation-auditor`. It audits whether clinical documentation substantiates the HCC risk-adjustment codes a record would claim. "Auditor" names the function — a pre-audit RADV review — not branding. Keep the README explicit that this is a research and educational demonstration, not a certified audit tool.)*
 
