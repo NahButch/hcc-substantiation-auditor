@@ -6,6 +6,10 @@
 
 A regulatory system is a feedback loop, not a one-way pipe:
 
+<p align="center">
+  <img src="feedback_loop.svg" alt="The policy feedback circuit: Policy directive → (translation) → Solution → Capture → Measure → Report → Analyze + propose → (synthesis) → back to a new Policy directive. Solution/Capture/Measure/Report are built (teal); Policy directive and Analyze + propose are the broader vision (gray); the translation and synthesis transitions are the AI edges (purple)." width="95%">
+</p>
+
 ```
   Policy directive  ──translation──▶  Solution  ──▶  Capture  ──▶  Measure
         ▲                                                              │
