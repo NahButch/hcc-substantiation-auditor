@@ -51,4 +51,18 @@ fn matches_python_reference_on_fixtures() {
     approx(sp.span_accuracy, 0.8);
     assert_eq!(sp.spans_checked, 5);
     approx(sp.hallucination_rate, 0.2); // Python (incl. citations) was 0.25
+
+    // Calibration — matches Python (n=6, ECE=0.3).
+    let cal = m.calibration.as_ref().unwrap();
+    assert_eq!(cal.n, 6);
+    assert!((cal.ece - 0.3).abs() < 1e-9, "ECE {} != 0.3", cal.ece);
+}
+
+#[test]
+fn injection_set_is_balanced_known_truth() {
+    let set = eval::inject::build_injection_set(eval::inject::DEFAULT_SPECS, 2);
+    assert_eq!(set.bundles.len(), 8);
+    assert_eq!(set.gold.iter().filter(|g| g.supported()).count(), 4);
+    assert_eq!(set.gold.iter().filter(|g| !g.supported()).count(), 4);
+    assert_eq!(set.gold.iter().filter(|g| g.holdout).count(), 4);
 }

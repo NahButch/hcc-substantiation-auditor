@@ -269,6 +269,66 @@ pub fn span_and_hallucination_metrics(
 }
 
 #[derive(Debug, Serialize)]
+pub struct CalibrationBin {
+    pub bin: [f64; 2],
+    pub n: usize,
+    pub mean_confidence: Option<f64>,
+    pub accuracy: Option<f64>,
+}
+
+#[derive(Debug, Serialize)]
+pub struct Calibration {
+    pub n: usize,
+    pub bins: usize,
+    pub ece: f64,
+    pub curve: Vec<CalibrationBin>,
+}
+
+/// Reliability curve + ECE for the auditor's confidence, if any is present.
+/// Confidence is read as P(the binary call is correct). Returns None when no
+/// confidence values are present.
+pub fn calibration_metrics(
+    audits: &[AuditRecord],
+    gold: &[GoldLabel],
+    bins: usize,
+    include_holdout: bool,
+) -> Option<Calibration> {
+    let idx = audit_index(audits);
+    let mut pts: Vec<(f64, bool)> = Vec::new();
+    for g in gold.iter().filter(|g| include_holdout || !g.holdout) {
+        if let Some(h) = idx.get(&g.key()) {
+            if let Some(conf) = h.confidence {
+                pts.push((conf.clamp(0.0, 1.0), h.final_supported() == g.supported()));
+            }
+        }
+    }
+    if pts.is_empty() {
+        return None;
+    }
+    let n = pts.len();
+    let mut curve = Vec::with_capacity(bins);
+    let mut ece = 0.0;
+    for i in 0..bins {
+        let lo = i as f64 / bins as f64;
+        let hi = (i + 1) as f64 / bins as f64;
+        let in_bin: Vec<&(f64, bool)> = pts
+            .iter()
+            .filter(|(c, _)| (*c >= lo && *c < hi) || (i == bins - 1 && *c == hi))
+            .collect();
+        if in_bin.is_empty() {
+            curve.push(CalibrationBin { bin: [lo, hi], n: 0, mean_confidence: None, accuracy: None });
+            continue;
+        }
+        let m = in_bin.len();
+        let mean_conf = in_bin.iter().map(|(c, _)| c).sum::<f64>() / m as f64;
+        let acc = in_bin.iter().filter(|(_, ok)| *ok).count() as f64 / m as f64;
+        ece += (m as f64 / n as f64) * (mean_conf - acc).abs();
+        curve.push(CalibrationBin { bin: [lo, hi], n: m, mean_confidence: Some(mean_conf), accuracy: Some(acc) });
+    }
+    Some(Calibration { n, bins, ece, curve })
+}
+
+#[derive(Debug, Serialize)]
 pub struct Counts {
     pub patients_audited: usize,
     pub audited_hccs: usize,
@@ -288,6 +348,8 @@ pub struct Metrics {
     pub extraction: Option<Extraction>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub spans: Option<Spans>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub calibration: Option<Calibration>,
 }
 
 /// Compute the full metrics bundle. Extraction needs candidates+engine; spans need notes.
@@ -315,5 +377,6 @@ pub fn compute_all<V: ModelVersion>(
         extraction: (!candidates.is_empty())
             .then(|| extraction_metrics(audits, candidates, xwalk, engine)),
         spans: (!notes.is_empty()).then(|| span_and_hallucination_metrics(audits, notes)),
+        calibration: calibration_metrics(audits, gold, 10, include_holdout),
     }
 }

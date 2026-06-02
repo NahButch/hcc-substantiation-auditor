@@ -12,7 +12,9 @@
 //!    allowed regulatory-authority list.
 
 pub mod candidates;
+pub mod inject;
 pub mod metrics;
 pub mod notes;
 pub mod report;
 pub mod schema;
+pub mod worksheet;

@@ -64,6 +64,17 @@ pub fn render_text(m: &Metrics) -> String {
             l.push(format!("  patients without notes:  {} (skipped)", sp.patients_without_notes));
         }
     }
+    if let Some(cal) = &m.calibration {
+        l.push(String::new());
+        l.push(format!("-- Calibration (n={}, ECE={}) {}", cal.n, num(Some(cal.ece)), "-".repeat(28)));
+        for b in &cal.curve {
+            if b.n == 0 {
+                continue;
+            }
+            l.push(format!("  [{:.1},{:.1}]   n={:<4} mean_conf={}  acc={}",
+                b.bin[0], b.bin[1], b.n, num(b.mean_confidence), num(b.accuracy)));
+        }
+    }
     l.push(eq);
     l.join("\n")
 }

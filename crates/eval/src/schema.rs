@@ -6,7 +6,7 @@
 //! about unknown keys (forward-compatible with the agent contract) and tolerant of
 //! single-pass output that carries only `status`.
 
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use std::path::Path;
 
 /// A status denotes a substantiated code only when it is exactly "supported";
@@ -100,7 +100,7 @@ pub struct AuditRecord {
     pub hccs: Vec<HccAudit>,
 }
 
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct GoldLabel {
     pub patient_id: String,
     pub hcc: u32,
@@ -134,7 +134,7 @@ impl GoldLabel {
     }
 }
 
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct Candidate {
     pub patient_id: String,
     pub hcc: u32,
@@ -165,6 +165,17 @@ pub fn read_jsonl<T: for<'de> Deserialize<'de>>(path: impl AsRef<Path>) -> std::
         out.push(v);
     }
     Ok(out)
+}
+
+/// Write serializable rows to a JSONL file. Returns the row count.
+pub fn write_jsonl<T: Serialize>(path: impl AsRef<Path>, rows: &[T]) -> std::io::Result<usize> {
+    let mut s = String::new();
+    for r in rows {
+        s.push_str(&serde_json::to_string(r).map_err(|e| std::io::Error::new(std::io::ErrorKind::InvalidData, e))?);
+        s.push('\n');
+    }
+    std::fs::write(path, s)?;
+    Ok(rows.len())
 }
 
 pub fn load_audits(path: impl AsRef<Path>) -> std::io::Result<Vec<AuditRecord>> {

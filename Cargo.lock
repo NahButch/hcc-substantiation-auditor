@@ -70,6 +70,7 @@ name = "eval"
 version = "0.1.0"
 dependencies = [
  "agent",
+ "base64",
  "engine",
  "serde",
  "serde_json",

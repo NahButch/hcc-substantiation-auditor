@@ -70,6 +70,7 @@ fn main() {
                 extraction: None,
                 spans: (!note_map.is_empty())
                     .then(|| metrics::span_and_hallucination_metrics(&audits, &note_map)),
+                calibration: metrics::calibration_metrics(&audits, &gold, 10, include_holdout),
             };
             if engine.is_none() && !candidates.is_empty() {
                 eprintln!("note: --tables not given; extraction metrics skipped (need engine for hierarchy collapse)");
