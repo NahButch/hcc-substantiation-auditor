@@ -1,0 +1,17 @@
+snomed_code,snomed_description,icd10,icd10_description,expected_v28_hcc,note
+714628002,Prediabetes (finding),R7303,Prediabetes,,near-miss: documented but not HCC-eligible
+44054006,Diabetes mellitus type 2 (disorder),E119,Type 2 diabetes mellitus without complications,38,
+127013003,Disorder of kidney due to diabetes mellitus (disorder),E1122,Type 2 diabetes mellitus with diabetic chronic kidney disease,37,
+90781000119102,Microalbuminuria due to type 2 diabetes mellitus (disorder),E1129,Type 2 diabetes mellitus with other diabetic kidney complication,37,
+157141000119108,Proteinuria due to type 2 diabetes mellitus (disorder),E1121,Type 2 diabetes mellitus with diabetic nephropathy,37,
+368581000119106,Neuropathy due to type 2 diabetes mellitus (disorder),E1140,Type 2 diabetes mellitus with diabetic neuropathy unspecified,37,
+1551000119108,Nonproliferative diabetic retinopathy due to type II diabetes mellitus,E11319,Type 2 diabetes mellitus with unspecified diabetic retinopathy without macular edema,37,
+1501000119109,Proliferative diabetic retinopathy due to type II diabetes mellitus,E11319,Type 2 diabetes mellitus with diabetic retinopathy,37,PDR-specific code absent from V28 package; collapsed to diabetic-retinopathy code present in V28
+431855005,Chronic kidney disease stage 1 (disorder),N181,Chronic kidney disease stage 1,,near-miss: CKD stage 1 not HCC-eligible
+431856006,Chronic kidney disease stage 2 (disorder),N182,Chronic kidney disease stage 2,,near-miss: CKD stage 2 not HCC-eligible
+433144002,Chronic kidney disease stage 3 (disorder),N1830,Chronic kidney disease stage 3 unspecified,329,
+431857002,Chronic kidney disease stage 4 (disorder),N184,Chronic kidney disease stage 4 (severe),327,
+46177005,End-stage renal disease (disorder),N186,End stage renal disease,326,
+161665007,History of renal transplant (situation),Z940,Kidney transplant status,,near-miss: transplant status not HCC-eligible
+88805009,Chronic congestive heart failure (disorder),I509,"Heart failure, unspecified",226,
+87433001,Pulmonary emphysema (disorder),J439,"Emphysema, unspecified",280,

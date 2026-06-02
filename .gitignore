@@ -2,6 +2,9 @@
 /target
 **/*.rs.bk
 
+# Stray Synthea default-output dir (real output goes under data/synthea/)
+/output
+
 # Python
 __pycache__/
 .venv/

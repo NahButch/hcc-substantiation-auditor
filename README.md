@@ -24,7 +24,7 @@ Under active development, building phase by phase.
 
 - [x] Phase 0 — Setup, scaffolding, data acquisition (`scripts/fetch_data.sh`, `DATA.md`)
 - [x] Phase 1 — Deterministic CMS-HCC V28 scoring engine (`engine`): mapping, hierarchy, constraining, demographic factors, interactions, provenance — verified against the CMS reference (`harness/crosscheck.py`)
-- [ ] Phase 2 — Extraction + single-pass substantiation assessment (`agent`)
+- [x] Phase 2 — Extraction + single-pass substantiation assessment (`agent`): local LLM (Ollama) behind a swappable interface, note→conditions extraction, per-HCC M.E.A.T. judgment with citations, run over a Synthea cohort
 - [ ] Phase 3 — Agent verify→self-correct loop + Python eval harness (`harness/`) + `RESULTS.md`
 
 ## Data policy
