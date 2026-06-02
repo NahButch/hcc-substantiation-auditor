@@ -1,5 +1,11 @@
 # HCC Substantiation Auditor
 
+<p align="center">
+  <img src="docs/circuit_diagram.svg" alt="The regulatory feedback circuit: policy directive → solution → capture → measure → report → analyze/propose, looping back. Solution/capture/measure/report are built (teal); policy and analyze/propose are the broader vision (gray); AI sits on the translation and synthesis edges." width="90%">
+</p>
+
+<p align="center"><em>Where this project sits in the regulatory feedback loop — teal is built, gray is the broader vision, purple marks the AI edges. See <a href="docs/07_POLICY_FEEDBACK_LOOP.md">the policy-feedback frame</a>.</em></p>
+
 Flags **unsubstantiated CMS-HCC risk-adjustment codes** — codes that are billed
 but not backed by M.E.A.T.-grade evidence in the clinical note. The design
 pattern is **the LLM proposes, a deterministic engine disposes**:
@@ -30,9 +36,11 @@ judgment is unavoidable. A Rust **`eval`** crate then scores the two LLM jobs
 | `agent` | [`crates/agent`](crates/agent) | LLM layer: note → conditions extraction, per-HCC M.E.A.T. judgment, `verify → self-correct` loop against `engine` |
 | `eval` | [`crates/eval`](crates/eval) | Rust eval harness: gold-label eval set + extraction/substantiation/system metrics (`harness/crosscheck.py` stays Python — it drives CMS's own reference) |
 | **Results** | [**`RESULTS.md`**](RESULTS.md) | Real numbers on the known-truth slice, with failure analysis and honest limitations |
+| Design docs | [`docs/`](docs/INDEX.md) | Planning & design package: overview, architecture, data strategy, eval design, the policy-feedback frame |
 
 **New here?** Read [`RESULTS.md`](RESULTS.md) for what it does and how well it
-does it, then [`crates/engine`](crates/engine) for the deterministic core.
+does it, then [`crates/engine`](crates/engine) for the deterministic core. For the
+bigger picture, [`docs/`](docs/INDEX.md).
 
 ## Status
 
