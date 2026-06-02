@@ -16,6 +16,7 @@ Companion planning and design documents for the
 | [`03_EVALUATION_HARNESS.md`](03_EVALUATION_HARNESS.md) | Metric design — extraction vs. substantiation scored separately. |
 | [`04_MILESTONES.md`](04_MILESTONES.md) | Phased build plan + as-built status. |
 | [`08_BUILD_RESULTS_SUMMARY.md`](08_BUILD_RESULTS_SUMMARY.md) | The measured outcomes and how to read them (see also [`../RESULTS.md`](../RESULTS.md)). |
+| [`WALKTHROUGH.md`](WALKTHROUGH.md) | One record traced end-to-end through the loop, from real output. |
 
 ## One-line status
 Phases 0–3 complete. Engine agrees exactly with the CMS reference (2,100+ fuzzed
