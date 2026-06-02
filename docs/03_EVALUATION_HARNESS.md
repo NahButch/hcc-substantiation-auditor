@@ -1,6 +1,6 @@
 # Evaluation Harness
 
-> This is what separates the project from a demo: applied-AI maturity *is* knowing how to measure a probabilistic system against truth.
+> A probabilistic system earns trust only when it is measured against ground truth. This harness does exactly that — scoring the two LLM jobs (extraction and substantiation) **separately**, against the deterministic engine and hand-labeled gold.
 
 ## Principle
 

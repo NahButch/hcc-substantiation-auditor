@@ -10,13 +10,6 @@ A regulatory system is a feedback loop, not a one-way pipe:
   <img src="feedback_loop.svg" alt="The policy feedback circuit: Policy directive → (translation) → Solution → Capture → Measure → Report → Analyze + propose → (synthesis) → back to a new Policy directive. Solution/Capture/Measure/Report are built (teal); Policy directive and Analyze + propose are the broader vision (gray); the translation and synthesis transitions are the AI edges (purple)." width="95%">
 </p>
 
-```
-  Policy directive  ──translation──▶  Solution  ──▶  Capture  ──▶  Measure
-        ▲                                                              │
-        │                                                              ▼
-   (new directive)  ◀──synthesis──  Analyze + propose  ◀──────────  Report
-```
-
 1. **Policy directive** — the goal and the rules: the CMS-HCC model + the RADV audit rule. *(What payment accuracy means, and that diagnoses must be supported in the record.)*
 2. **Solution** — the policy operationalized as something executable: this project's deterministic engine (the rules as code) + the agent (the documentation judgment).
 3. **Capture** — real-world signal the running solution produces: which codes flag, which documentation patterns fail, where the agent and the engine diverge.

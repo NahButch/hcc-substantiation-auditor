@@ -3,45 +3,45 @@
 Phased so each checkpoint is a finishable, demonstrable artifact. The project has portfolio value at the end of Phase 3; Phases 4–5 are upside. **Resist scope creep** (see overview) — a finished narrow system beats an unfinished broad one.
 
 ## Phase 0 — Setup & decisions (small, do first)
-- [ ] Pick and **pin one HCC model version**. Document why. (Do not support multiple versions in v1.)
-- [ ] Choose the narrow HCC subset to target (a handful of common, well-documented categories — enough to be real, few enough to finish).
-- [ ] Stand up the repo with `DATA.md`, license notes, and the synthetic-only statement.
-- [ ] Generate a first small Synthea cohort with notes enabled; confirm notes are rich enough to reason over.
+- [x] Pick and **pin one HCC model version**. Document why. (Do not support multiple versions in v1.)
+- [x] Choose the narrow HCC subset to target (a handful of common, well-documented categories — enough to be real, few enough to finish).
+- [x] Stand up the repo with `DATA.md`, license notes, and the synthetic-only statement.
+- [x] Generate a first small Synthea cohort with notes enabled; confirm notes are rich enough to reason over.
 
 **Done = repo exists, data pipeline produces note-bearing synthetic records.**
 
 ## Phase 1 — Deterministic engine (the truth side)
-- [ ] ICD-10 → HCC mapping for the pinned version and chosen subset.
-- [ ] HCC → risk-score calculation incl. hierarchy logic and demographic factors.
-- [ ] Provenance output: which diagnosis drove which HCC.
-- [ ] Compile-checked model-version typing.
-- [ ] Unit tests on the scoring logic; a few hand-computed cases as fixtures.
+- [x] ICD-10 → HCC mapping for the pinned version and chosen subset.
+- [x] HCC → risk-score calculation incl. hierarchy logic and demographic factors.
+- [x] Provenance output: which diagnosis drove which HCC.
+- [x] Compile-checked model-version typing.
+- [x] Unit tests on the scoring logic; a few hand-computed cases as fixtures.
 
 **Done = given diagnoses + demographics, the engine returns a correct, decomposable score. This alone is a credible domain artifact.**
 
 ## Phase 2 — Extraction + single-pass assessment (no loop yet)
-- [ ] LLM extraction: note → documented conditions + supporting spans.
-- [ ] Wire extraction output into the engine to produce a candidate HCC set + score.
-- [ ] First-pass substantiation judgment (single prompt, no self-correction).
-- [ ] Emit flags with regulatory citations.
+- [x] LLM extraction: note → documented conditions + supporting spans.
+- [x] Wire extraction output into the engine to produce a candidate HCC set + score.
+- [x] First-pass substantiation judgment (single prompt, no self-correction).
+- [x] Emit flags with regulatory citations.
 
 **Done = end-to-end single pass: note in, flagged-code report out.**
 
 ## Phase 3 — The agent loop + evaluation (the credibility core)
-- [ ] Add the VERIFY step: cross-check LLM claims against engine output.
-- [ ] Add SELF-CORRECT: on disagreement, re-examine the specific code.
-- [ ] Build the labeled eval set (hand-label substantiation truth on a clean sample; inject controlled errors).
-- [ ] Implement the metric set from `03_EVALUATION_HARNESS.md`.
-- [ ] Write the results table + failure-mode analysis + "what the oracle caught" section.
+- [x] Add the VERIFY step: cross-check LLM claims against engine output.
+- [x] Add SELF-CORRECT: on disagreement, re-examine the specific code.
+- [x] Build the labeled eval set (hand-label substantiation truth on a clean sample; inject controlled errors).
+- [x] Implement the metric set from `03_EVALUATION_HARNESS.md`.
+- [x] Write the results table + failure-mode analysis + "what the oracle caught" section.
 
 **Done = a measured, self-correcting agent with published numbers. THIS IS THE PORTFOLIO DELIVERABLE.** Stop here and polish if time is short.
 
 ## Phase 4 — Packaging & narrative (cheap, high ROI)
-- [ ] Clean README: the thesis, the architecture diagram, the results, the honest limitations.
+- [x] Clean README: the thesis, the architecture diagram, the results, the honest limitations.
 - [ ] A short walkthrough (recorded demo or annotated example) showing one record flowing through the loop.
-- [ ] Narrative / framing notes (kept in a separate private doc).
+- [x] Narrative / framing notes (kept in a separate private doc).
 
-**Done = a stranger can understand the value in two minutes.**
+**Done = an industry engineer grasps the value in two minutes — and could take it further for applied research.**
 
 ## Phase 5 — Optional upside (only after 3–4 are solid)
 - [ ] Expose the engine as an **MCP server** (fourth domain-differentiated MCP tool, connects to the existing three).
