@@ -1,0 +1,6 @@
+{"patient_id": "p1", "hcc": 37, "gold_status": "supported", "source": "manual", "rationale": "Diabetes with CKD assessed and treated (metformin, HbA1c).", "holdout": false}
+{"patient_id": "p2", "hcc": 37, "gold_status": "unsupported", "source": "injected", "rationale": "Diabetes coded but note documents only an ankle sprain.", "holdout": false}
+{"patient_id": "p3", "hcc": 327, "gold_status": "supported", "source": "manual", "rationale": "CKD stage 4 with eGFR and nephrology follow-up.", "holdout": false}
+{"patient_id": "p4", "hcc": 327, "gold_status": "unsupported", "source": "injected", "rationale": "CKD coded but note documents only a flu shot.", "holdout": false}
+{"patient_id": "p5", "hcc": 226, "gold_status": "supported", "source": "manual", "rationale": "CHF with EF and active management.", "holdout": true}
+{"patient_id": "p6", "hcc": 280, "gold_status": "unsupported", "source": "injected", "rationale": "COPD coded; held-out unsupported control.", "holdout": true}

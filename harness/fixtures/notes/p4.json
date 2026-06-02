@@ -1,0 +1,50 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "p4",
+        "birthDate": "1950-01-01",
+        "gender": "male",
+        "name": [
+          {
+            "given": [
+              "Test"
+            ],
+            "family": "P4"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "431857002",
+              "display": "Chronic kidney disease stage 4 (severe)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DocumentReference",
+        "date": "2026-01-15T09:00:00-05:00",
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain; charset=utf-8",
+              "data": "Rmx1IHNob3QgYWRtaW5pc3RlcmVkLiBObyBhY3V0ZSBjb25jZXJucy4="
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
