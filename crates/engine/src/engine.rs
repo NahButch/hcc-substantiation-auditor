@@ -130,9 +130,11 @@ impl<V: ModelVersion> Engine<V> {
         // --- 5. Build the variable → value map for scoring ---
         let mut values: BTreeMap<String, f64> = BTreeMap::new();
 
-        // Age/sex demographic cell.
+        // Age/sex demographic cell (None if age falls in no band, e.g. negative age).
         let age_sex = age_sex_variable(age, person.sex);
-        values.insert(age_sex.clone(), 1.0);
+        if let Some(cell) = &age_sex {
+            values.insert(cell.clone(), 1.0);
+        }
 
         // Other demographic flags.
         let origdis = is_originally_disabled(age, person.orec);
@@ -232,7 +234,10 @@ impl<V: ModelVersion> Engine<V> {
             model: V::NAME,
             segment,
             age,
-            demographic: Factor { variable: age_sex.clone(), coefficient: self.tables.coef(&age_sex, seg) },
+            demographic: Factor {
+                variable: age_sex.clone().unwrap_or_default(),
+                coefficient: age_sex.as_ref().map(|c| self.tables.coef(c, seg)).unwrap_or(0.0),
+            },
             extra_demographic,
             hccs,
             hcc_count: Factor { variable: count_var.clone(), coefficient: self.tables.coef(&count_var, seg) },

@@ -9,7 +9,10 @@ Rules:
   it exactly, do not paraphrase).
 - Record the note section the evidence came from (e.g. "Chief Complaint",
   "History of Present Illness", "Assessment and Plan", "Medications").
-- If you can confidently assign an ICD-10-CM code, include it; otherwise omit it.
+- Assign the most specific ICD-10-CM code you can for each documented condition
+  (e.g. "Type 2 diabetes with chronic kidney disease" → E11.22; "CKD stage 4" →
+  N18.4; "chronic heart failure" → I50.9; "emphysema/COPD" → J43.9). Use the
+  `icd10` field; omit it only if you genuinely cannot code the condition.
 - Be precise about specificity and laterality if the note states them.
 
 Output ONLY a JSON object, no prose, matching exactly this schema:

@@ -134,6 +134,16 @@ fn deterministic_repeated_scoring() {
 }
 
 #[test]
+fn negative_age_assigns_no_demographic_cell() {
+    // Born after the 2026-02-01 cutoff → age -1. CMS assigns no age/sex cell;
+    // the engine must not fall back to the 0_34 cell (differential-fuzzer regression).
+    let r = engine().score(&bene("N", Date::new(2026, 6, 1), Sex::Male, &["E11.65"]));
+    assert_eq!(r.age, -1);
+    assert!(r.demographic.variable.is_empty(), "negative age must yield no age/sex cell");
+    approx(r.demographic.coefficient, 0.0);
+}
+
+#[test]
 fn age_rule_evaluator_forms() {
     assert!(evaluate_age_rule("age >= 18", 18));
     assert!(!evaluate_age_rule("age >= 18", 17));

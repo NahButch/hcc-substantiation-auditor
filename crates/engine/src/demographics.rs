@@ -44,8 +44,10 @@ pub const AGE_BANDS: &[(i32, Option<i32>)] = &[
 ];
 
 /// The age/sex coefficient variable for a beneficiary, e.g. `F70_74`, `M95_GT`.
-/// Returns the first band the age falls into (bands are non-overlapping).
-pub fn age_sex_variable(age: i32, sex: Sex) -> String {
+/// Returns the first band the age falls into, or `None` if the age falls in no
+/// band (e.g. a negative age for someone born after the payment-year cutoff) —
+/// matching the CMS reference, which assigns no age/sex cell in that case.
+pub fn age_sex_variable(age: i32, sex: Sex) -> Option<String> {
     let s = match sex {
         Sex::Male => 'M',
         Sex::Female => 'F',
@@ -53,14 +55,13 @@ pub fn age_sex_variable(age: i32, sex: Sex) -> String {
     for &(start, stop) in AGE_BANDS {
         let in_band = age >= start && stop.map_or(true, |hi| age <= hi);
         if in_band {
-            return match stop {
+            return Some(match stop {
                 Some(hi) => format!("{s}{start}_{hi}"),
                 None => format!("{s}{start}_GT"),
-            };
+            });
         }
     }
-    // Ages below 0 are invalid input; clamp to the youngest band defensively.
-    format!("{s}0_34")
+    None
 }
 
 /// `DISABL`: under 65 and originally entitled by disability (OREC 1, 2, or 3).
