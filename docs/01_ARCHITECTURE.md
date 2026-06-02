@@ -2,6 +2,12 @@
 
 ## System at a glance
 
+<p align="center">
+  <img src="architecture.svg" alt="System architecture: an orchestration layer (agent loop) drives an LLM reasoning layer (probabilistic, purple) and a deterministic engine (verifiable oracle, teal) that exchange tool calls; both feed an offline eval harness." width="95%">
+</p>
+
+<details><summary>Text version</summary>
+
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                      ORCHESTRATION LAYER                       │
@@ -27,6 +33,8 @@
                   │  (separate, offline) │
                   └─────────────────────┘
 ```
+
+</details>
 
 ## Component 1 — Deterministic scoring engine (Rust)
 
@@ -60,6 +68,12 @@ The layer never finalizes a substantiation claim that contradicts the engine's l
 
 The loop that makes it *agentic* rather than a single prompt:
 
+<p align="center">
+  <img src="agent_loop.svg" alt="The seven-step agent loop: 1 PLAN, 2 EXTRACT (LLM), 3 SCORE (engine), 4 JUDGE (LLM), 5 VERIFY, 6 SELF-CORRECT (loops back to JUDGE), 7 REPORT." width="92%">
+</p>
+
+<details><summary>Text version</summary>
+
 ```
 1. PLAN     → given a member's synthetic record, decide what to assess
 2. EXTRACT  → LLM pulls documented conditions + spans from the note(s)
@@ -73,6 +87,8 @@ The loop that makes it *agentic* rather than a single prompt:
 7. REPORT   → emit flags (unsupported / risky codes) each with a regulatory
               citation and the documentation gap that drives the flag
 ```
+
+</details>
 
 The **VERIFY → SELF-CORRECT against an oracle** segment is the crux of the design. It is the difference between "an LLM with a medical prompt" and "an agent grounded in a verifiable source of truth."
 

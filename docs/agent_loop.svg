@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 720 590" role="img" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title>The agent loop</title>
+<desc>Seven stages: 1 PLAN (orchestration), 2 EXTRACT (LLM), 3 SCORE (engine), 4 JUDGE (LLM), 5 VERIFY (cross-check), 6 SELF-CORRECT (LLM, loops back to re-judge), 7 REPORT (orchestration). LLM stages are purple, the deterministic engine stage is teal, orchestration stages are indigo.</desc>
+<defs>
+<marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<text x="360" y="30" text-anchor="middle" font-size="16" font-weight="600" fill="#57534e">The agent loop</text>
+
+<!-- connectors down the spine (disc to disc) -->
+<g stroke="#a8a29e" stroke-width="1.6" fill="none">
+<path d="M44 98 L44 132" marker-end="url(#ah)"/>
+<path d="M44 170 L44 204" marker-end="url(#ah)"/>
+<path d="M44 242 L44 276" marker-end="url(#ah)"/>
+<path d="M44 314 L44 348" marker-end="url(#ah)"/>
+<path d="M44 386 L44 420" marker-end="url(#ah)"/>
+<path d="M44 458 L44 492" marker-end="url(#ah)"/>
+</g>
+
+<!-- self-correct loop-back: step 6 -> step 4 (re-judge) -->
+<path d="M634 442 L666 442 L666 298 L636 298" fill="none" stroke="#8b5cf6" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="684" y="370" text-anchor="middle" font-size="10.5" font-style="italic" fill="#7c3aed" transform="rotate(90 684 370)">re-examine the code</text>
+
+<!-- ===== steps ===== -->
+<!-- 1 PLAN (orchestration) -->
+<circle cx="44" cy="82" r="16" fill="#6366f1"/><text x="44" y="87" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">1</text>
+<rect x="74" y="56" width="560" height="52" rx="9" fill="#eef2ff" stroke="#6366f1" stroke-width="1.4"/>
+<text x="92" y="79" font-size="13" font-weight="600" fill="#4338ca">PLAN</text>
+<text x="92" y="97" font-size="11" fill="#57534e">decide what to assess for a member's (synthetic) record</text>
+
+<!-- 2 EXTRACT (LLM) -->
+<circle cx="44" cy="154" r="16" fill="#8b5cf6"/><text x="44" y="159" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">2</text>
+<rect x="74" y="128" width="560" height="52" rx="9" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1.4"/>
+<text x="92" y="151" font-size="13" font-weight="600" fill="#6d28d9">EXTRACT <tspan font-weight="400" font-style="italic" fill="#7c3aed">· LLM</tspan></text>
+<text x="92" y="169" font-size="11" fill="#57534e">pull documented conditions + evidence spans from the note(s)</text>
+
+<!-- 3 SCORE (engine) -->
+<circle cx="44" cy="226" r="16" fill="#14b8a6"/><text x="44" y="231" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">3</text>
+<rect x="74" y="200" width="560" height="52" rx="9" fill="#f0fdfa" stroke="#14b8a6" stroke-width="1.4"/>
+<text x="92" y="223" font-size="13" font-weight="600" fill="#0f766e">SCORE <tspan font-weight="400" font-style="italic" fill="#0d9488">· deterministic engine</tspan></text>
+<text x="92" y="241" font-size="11" fill="#57534e">call the engine with the extracted diagnoses → coded HCC set + score</text>
+
+<!-- 4 JUDGE (LLM) -->
+<circle cx="44" cy="298" r="16" fill="#8b5cf6"/><text x="44" y="303" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">4</text>
+<rect x="74" y="272" width="560" height="52" rx="9" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1.4"/>
+<text x="92" y="295" font-size="13" font-weight="600" fill="#6d28d9">JUDGE <tspan font-weight="400" font-style="italic" fill="#7c3aed">· LLM</tspan></text>
+<text x="92" y="313" font-size="11" fill="#57534e">assess substantiation of each engine-triggered HCC vs. the documentation</text>
+
+<!-- 5 VERIFY (gate) -->
+<circle cx="44" cy="370" r="16" fill="#78716c"/><text x="44" y="375" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">5</text>
+<rect x="74" y="344" width="560" height="52" rx="9" fill="#fafaf9" stroke="#78716c" stroke-width="1.4"/>
+<text x="92" y="367" font-size="13" font-weight="600" fill="#44403c">VERIFY <tspan font-weight="400" font-style="italic" fill="#78716c">· cross-check against the oracle</tspan></text>
+<text x="92" y="385" font-size="11" fill="#57534e">does the LLM's claim set agree with the engine's coded set? flag disagreements</text>
+
+<!-- 6 SELF-CORRECT (LLM) -->
+<circle cx="44" cy="442" r="16" fill="#8b5cf6"/><text x="44" y="447" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">6</text>
+<rect x="74" y="416" width="560" height="52" rx="9" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1.4"/>
+<text x="92" y="439" font-size="13" font-weight="600" fill="#6d28d9">SELF-CORRECT <tspan font-weight="400" font-style="italic" fill="#7c3aed">· LLM</tspan></text>
+<text x="92" y="457" font-size="11" fill="#57534e">on disagreement, re-examine that specific code — accept neither side blindly</text>
+
+<!-- 7 REPORT (orchestration) -->
+<circle cx="44" cy="514" r="16" fill="#6366f1"/><text x="44" y="519" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">7</text>
+<rect x="74" y="488" width="560" height="52" rx="9" fill="#eef2ff" stroke="#6366f1" stroke-width="1.4"/>
+<text x="92" y="511" font-size="13" font-weight="600" fill="#4338ca">REPORT</text>
+<text x="92" y="529" font-size="11" fill="#57534e">emit flags (unsupported / risky) with a regulatory citation + the documentation gap</text>
+
+<!-- legend -->
+<circle cx="150" cy="566" r="6" fill="#8b5cf6"/><text x="162" y="570" font-size="10.5" fill="#57534e">LLM (probabilistic)</text>
+<circle cx="300" cy="566" r="6" fill="#14b8a6"/><text x="312" y="570" font-size="10.5" fill="#57534e">deterministic engine</text>
+<circle cx="452" cy="566" r="6" fill="#6366f1"/><text x="464" y="570" font-size="10.5" fill="#57534e">orchestration</text>
+</svg>
